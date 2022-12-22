@@ -1,3 +1,5 @@
+.eslintrc.js
+
 # dependencies
 /node_modules
 /.pnp
@@ -6,6 +8,7 @@
 # testing
 /coverage
 .jest-cache
+jest.config.js
 
 # next.js
 /.next/

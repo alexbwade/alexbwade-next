@@ -7,9 +7,9 @@ const getAliasedModules = (jsConfig) => {
   const entries = Object.entries(jsConfig.compilerOptions.paths);
 
   return entries.map(([alias, pathArray]) => {
-    const path = pathArray[0];
+    const filepath = pathArray[0];
 
-    return [alias, path];
+    return [alias, filepath];
   });
 };
 
@@ -17,9 +17,9 @@ const getAliasesEslint = (jsConfig) => {
   const modules = getAliasedModules(jsConfig);
   const aliases = [];
 
-  for (const [alias, path] of modules) {
+  for (const [alias, filepath] of modules) {
     const formattedAlias = alias.replace("/*", "");
-    const formattedPath = path.replace("/*", "").replace("/index.js", "");
+    const formattedPath = filepath.replace("/*", "").replace("/index.js", "");
 
     aliases.push([formattedAlias, formattedPath]);
   }
@@ -31,10 +31,10 @@ const getAliasesJest = (jsConfig) => {
   const modules = getAliasedModules(jsConfig);
   const aliases = {};
 
-  for (const [alias, path] of modules) {
-    const aliasSuffix = path.includes("index.js") ? "" : "(.*)$";
+  for (const [alias, filepath] of modules) {
+    const aliasSuffix = filepath.includes("index.js") ? "" : "(.*)$";
     const formattedAlias = `^${alias.replace("/*", aliasSuffix)}`;
-    const formattedPath = path.replace("./", "<rootDir>/").replace("/*", "$1");
+    const formattedPath = filepath.replace("./", "<rootDir>/").replace("/*", "$1");
 
     aliases[formattedAlias] = formattedPath;
   }
@@ -59,4 +59,4 @@ function getAliases({ format, config }) {
   }
 }
 
-module.exports = { getAliases };
+module.exports = getAliases;

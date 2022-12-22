@@ -1,9 +1,11 @@
 const tsConfig = require("./tsconfig.json");
-const { getAliases } = require("./config/aliases");
+const getAliases = require("./config/aliases");
 
 const OFF = "off";
 const ERROR = "error";
 const ALWAYS = "always";
+
+const moduleAliasesMap = getAliases({ config: tsConfig, format: "eslint" });
 
 module.exports = {
   env: {
@@ -13,16 +15,18 @@ module.exports = {
     node: true,
     "jest/globals": true,
   },
-  parser: "@babel/eslint-parser",
+  parser: "@typescript-eslint/parser",
   extends: [
     "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@next/next/recommended",
     "plugin:react/recommended",
     "plugin:jest/recommended",
     "plugin:jest/style",
     "plugin:import/recommended",
     "plugin:css-modules/recommended",
     "plugin:prettier/recommended",
-    "plugin:@next/next/recommended",
   ],
   parserOptions: {
     ecmaVersion: 8,
@@ -50,13 +54,13 @@ module.exports = {
         moduleDirectory: ["node_modules", "src"],
       },
       alias: {
-        map: getAliases({ config: tsConfig, format: "eslint" }),
+        map: moduleAliasesMap,
       },
     },
     react: {
       version: "detect",
     },
   },
-  plugins: ["import", "prettier", "react", "jest", "css-modules"],
-  ignorePatterns: [],
+  plugins: ["import", "prettier", "react", "jest", "css-modules", "@typescript-eslint"],
+  root: true,
 };
