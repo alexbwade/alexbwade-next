@@ -1,38 +1,103 @@
-$gap: 12px;
-
-.header {
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.main {
-  // max-width: 1700px;
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
+.wrapper {
   display: flex;
-  justify-content: space-between;
+  height: 100vh;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)),
+    url("../../../public/images/background-main.jpg");
+  background-size: cover;
+  background-position: center center;
+  color: #072e74;
 
-  &.centered {
-    justify-content: center;
-    align-items: center;
+  h1 {
+    font-weight: 900;
+    color: #072e74;
+
+    span {
+      color: #6db9d5;
+    }
+  }
+
+  h2 {
+    font-weight: normal;
   }
 }
 
-.trackerWrapper {
-  padding-top: 20px;
-  padding-left: 15px;
+.portrait {
+  width: 38%;
+  background-image: url("../../../public/images/alex-wade-photo.jpg");
+  background-size: cover;
+  background-position: center center;
+  color: #dde2e6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-weight: lighter;
+  font-style: italic;
 }
 
-.challengeWrapper {
-  padding-top: 20px;
-  padding-right: 15px;
-  width: 1000px;
+.content {
+  width: 62%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  > div {
+    padding: 20px;
+  }
 }
 
-.checklistWrapper {
-  padding-top: 20px;
-  // padding-right: 15px;
-  // padding-right: 15px;
-  width: 350px;
+.textLightspeed {
+  font-weight: 900;
+  color: #00afd7;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.photoBy {
+  padding: 15px;
+
+  a {
+    font-size: 16px;
+    padding: 0 5px;
+    font-weight: normal;
+    text-decoration: none;
+    color: white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media screen and (max-width: 1124px) {
+  .wrapper {
+    display: block;
+
+    h1 {
+      color: white;
+    }
+  }
+  .portrait {
+    width: 100%;
+    height: 100vh;
+    font-size: 12px;
+    position: absolute;
+    background-image: linear-gradient(to bottom, fade-out(#000, 0.95), fade-out(#000, 0.7), fade-out(#000, 0.6)),
+      url("../../../public/images/alex-wade-photo.jpg");
+  }
+
+  .content {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    color: white;
+    align-items: flex-end;
+
+    div {
+      margin-bottom: 20px;
+    }
+  }
 }
