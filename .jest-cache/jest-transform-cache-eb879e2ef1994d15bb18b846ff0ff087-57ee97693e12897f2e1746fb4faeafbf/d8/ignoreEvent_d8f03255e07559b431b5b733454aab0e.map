@@ -1,1 +1,0 @@
-{"version":3,"names":["ignoreEvent","e","preventDefault"],"sources":["ignoreEvent.js"],"sourcesContent":["export default function ignoreEvent(e) {\n  e.preventDefault();\n}\n"],"mappings":";;;;;;AAAe,SAASA,WAAW,CAACC,CAAC,EAAE;EACrCA,CAAC,CAACC,cAAc,EAAE;AACpB"}
