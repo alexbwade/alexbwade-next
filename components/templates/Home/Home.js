@@ -14,14 +14,14 @@ export default function Home() {
       <main className={styles.content}>
         <div>
           <h1>
-            Hi there, I'm <span>Alex</span>!
+            Hi there, I&apos;m <span>Alex</span>!
           </h1>
           <h2>
             I am a front-end focused <strong>software engineer</strong> based in the Portland area.
           </h2>
           <p>
-            My passion is building fast, user-focused web applications that feel intuitive and add value to people's
-            lives.
+            My passion is building fast, user-focused web applications that feel intuitive and add value to
+            people&apos;s lives.
           </p>
           <p>
             <em>
