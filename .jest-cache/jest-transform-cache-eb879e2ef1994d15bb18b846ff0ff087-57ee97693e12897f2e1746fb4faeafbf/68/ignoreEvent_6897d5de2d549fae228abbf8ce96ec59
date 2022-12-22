@@ -1,0 +1,11 @@
+69e530b8177dcf68366f2d9d210fa7da
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = ignoreEvent;
+function ignoreEvent(e) {
+  e.preventDefault();
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJpZ25vcmVFdmVudCIsImUiLCJwcmV2ZW50RGVmYXVsdCJdLCJzb3VyY2VzIjpbImlnbm9yZUV2ZW50LmpzIl0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIGlnbm9yZUV2ZW50KGUpIHtcbiAgZS5wcmV2ZW50RGVmYXVsdCgpO1xufVxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7QUFBZSxTQUFTQSxXQUFXLENBQUNDLENBQUMsRUFBRTtFQUNyQ0EsQ0FBQyxDQUFDQyxjQUFjLEVBQUU7QUFDcEIifQ==

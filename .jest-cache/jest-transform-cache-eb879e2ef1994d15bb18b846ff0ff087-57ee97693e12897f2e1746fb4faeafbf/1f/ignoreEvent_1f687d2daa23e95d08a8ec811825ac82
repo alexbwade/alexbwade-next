@@ -1,0 +1,4 @@
+6ce57ee9f676ed852bb4a7a996562acc
+export default function ignoreEvent(e) {
+  e.preventDefault();
+}

@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~constants": ["./constants/index.js"],
+      "~utils": ["./utils/index.js"],
+      "~widgets": ["./components/widgets/index.js"],
+      "~elements": ["./components/elements/index.js"],
+      "~partials": ["./components/partials/index.js"],
+      "~templates": ["./components/templates/index.js"]
+    },
+    "target": "es2017",
+    "types": ["node", "jest"],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

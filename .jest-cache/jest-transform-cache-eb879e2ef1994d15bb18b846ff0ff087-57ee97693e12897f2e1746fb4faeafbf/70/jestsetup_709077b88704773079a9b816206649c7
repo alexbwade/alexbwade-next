@@ -1,0 +1,60 @@
+6218888b5ff8b427516766499304e3be
+"use strict";
+
+_getJestObj().mock("next/image", function () {
+  return {
+    __esModule: true,
+    "default": function _default(props) {
+      // eslint-disable-next-line
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)("img", _objectSpread({}, props));
+    }
+  };
+});
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+require("@testing-library/jest-dom/extend-expect");
+require("regenerator-runtime/runtime");
+var _jsxRuntime = require("react/jsx-runtime");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _getJestObj() {
+  var _require = require("@jest/globals"),
+    jest = _require.jest;
+  _getJestObj = function _getJestObj() {
+    return jest;
+  };
+  return jest;
+}
+global.simpleMock = function (mockName) {
+  return eval("const ".concat(mockName, " = props => { return props.children || null }; ").concat(mockName)); // eslint-disable-line no-eval
+};
+
+global.componentMock = function (mockName) {
+  return function (props) {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      "data-testid": mockName,
+      children: props.children
+    });
+  }; // eslint-disable-line
+};
+
+// Fail on prop type errors
+var originalConsoleError = global.console.error;
+beforeEach(function () {
+  global.console.error = function () {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    var propTypeFailures = /\sprop\s/g.test(args.join(" "));
+    if (propTypeFailures) {
+      throw new Error("Failed prop type: ".concat(args[2]));
+    }
+    originalConsoleError.apply(void 0, args);
+  };
+});
+afterEach(function () {
+  global.console.error = originalConsoleError;
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJtb2NrIiwiX19lc01vZHVsZSIsInByb3BzIiwiZ2xvYmFsIiwic2ltcGxlTW9jayIsIm1vY2tOYW1lIiwiZXZhbCIsImNvbXBvbmVudE1vY2siLCJjaGlsZHJlbiIsIm9yaWdpbmFsQ29uc29sZUVycm9yIiwiY29uc29sZSIsImVycm9yIiwiYmVmb3JlRWFjaCIsImFyZ3MiLCJwcm9wVHlwZUZhaWx1cmVzIiwidGVzdCIsImpvaW4iLCJFcnJvciIsImFmdGVyRWFjaCJdLCJzb3VyY2VzIjpbImplc3Quc2V0dXAuanMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFwiQHRlc3RpbmctbGlicmFyeS9qZXN0LWRvbS9leHRlbmQtZXhwZWN0XCI7XG5pbXBvcnQgXCJyZWdlbmVyYXRvci1ydW50aW1lL3J1bnRpbWVcIjtcblxuZ2xvYmFsLnNpbXBsZU1vY2sgPSAobW9ja05hbWUpID0+IHtcbiAgcmV0dXJuIGV2YWwoYGNvbnN0ICR7bW9ja05hbWV9ID0gcHJvcHMgPT4geyByZXR1cm4gcHJvcHMuY2hpbGRyZW4gfHwgbnVsbCB9OyAke21vY2tOYW1lfWApOyAvLyBlc2xpbnQtZGlzYWJsZS1saW5lIG5vLWV2YWxcbn07XG5cbmdsb2JhbC5jb21wb25lbnRNb2NrID0gKG1vY2tOYW1lKSA9PiB7XG4gIHJldHVybiAocHJvcHMpID0+IDxkaXYgZGF0YS10ZXN0aWQ9e21vY2tOYW1lfT57cHJvcHMuY2hpbGRyZW59PC9kaXY+OyAvLyBlc2xpbnQtZGlzYWJsZS1saW5lXG59O1xuXG4vLyBGYWlsIG9uIHByb3AgdHlwZSBlcnJvcnNcbmNvbnN0IG9yaWdpbmFsQ29uc29sZUVycm9yID0gZ2xvYmFsLmNvbnNvbGUuZXJyb3I7XG5cbmJlZm9yZUVhY2goKCkgPT4ge1xuICBnbG9iYWwuY29uc29sZS5lcnJvciA9ICguLi5hcmdzKSA9PiB7XG4gICAgY29uc3QgcHJvcFR5cGVGYWlsdXJlcyA9IC9cXHNwcm9wXFxzL2cudGVzdChhcmdzLmpvaW4oXCIgXCIpKTtcblxuICAgIGlmIChwcm9wVHlwZUZhaWx1cmVzKSB7XG4gICAgICB0aHJvdyBuZXcgRXJyb3IoYEZhaWxlZCBwcm9wIHR5cGU6ICR7YXJnc1syXX1gKTtcbiAgICB9XG5cbiAgICBvcmlnaW5hbENvbnNvbGVFcnJvciguLi5hcmdzKTtcbiAgfTtcbn0pO1xuXG5hZnRlckVhY2goKCkgPT4ge1xuICBnbG9iYWwuY29uc29sZS5lcnJvciA9IG9yaWdpbmFsQ29uc29sZUVycm9yO1xufSk7XG5cbmplc3QubW9jayhcIm5leHQvaW1hZ2VcIiwgKCkgPT4gKHtcbiAgX19lc01vZHVsZTogdHJ1ZSxcbiAgZGVmYXVsdDogKHByb3BzKSA9PiB7XG4gICAgLy8gZXNsaW50LWRpc2FibGUtbmV4dC1saW5lXG4gICAgcmV0dXJuIDxpbWcgey4uLnByb3BzfSAvPjtcbiAgfSxcbn0pKTtcbiJdLCJtYXBwaW5ncyI6Ijs7QUE4QkEsY0FBS0EsSUFBSSxDQUFDLFlBQVksRUFBRTtFQUFBLE9BQU87SUFDN0JDLFVBQVUsRUFBRSxJQUFJO0lBQ2hCLFdBQVMsa0JBQUNDLEtBQUssRUFBSztNQUNsQjtNQUNBLG9CQUFPLDhDQUFTQSxLQUFLLEVBQUk7SUFDM0I7RUFDRixDQUFDO0FBQUEsQ0FBQyxDQUFDO0FBQUM7QUFwQ0o7QUFDQTtBQUFxQztBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtFQUFBO0lBQUE7RUFBQTtJQUFBO0VBQUE7RUFBQTtBQUFBO0FBRXJDQyxNQUFNLENBQUNDLFVBQVUsR0FBRyxVQUFDQyxRQUFRLEVBQUs7RUFDaEMsT0FBT0MsSUFBSSxpQkFBVUQsUUFBUSw0REFBa0RBLFFBQVEsRUFBRyxDQUFDLENBQUM7QUFDOUYsQ0FBQzs7QUFFREYsTUFBTSxDQUFDSSxhQUFhLEdBQUcsVUFBQ0YsUUFBUSxFQUFLO0VBQ25DLE9BQU8sVUFBQ0gsS0FBSztJQUFBLG9CQUFLO01BQUssZUFBYUcsUUFBUztNQUFBLFVBQUVILEtBQUssQ0FBQ007SUFBUSxFQUFPO0VBQUEsRUFBQyxDQUFDO0FBQ3hFLENBQUM7O0FBRUQ7QUFDQSxJQUFNQyxvQkFBb0IsR0FBR04sTUFBTSxDQUFDTyxPQUFPLENBQUNDLEtBQUs7QUFFakRDLFVBQVUsQ0FBQyxZQUFNO0VBQ2ZULE1BQU0sQ0FBQ08sT0FBTyxDQUFDQyxLQUFLLEdBQUcsWUFBYTtJQUFBLGtDQUFURSxJQUFJO01BQUpBLElBQUk7SUFBQTtJQUM3QixJQUFNQyxnQkFBZ0IsR0FBRyxXQUFXLENBQUNDLElBQUksQ0FBQ0YsSUFBSSxDQUFDRyxJQUFJLENBQUMsR0FBRyxDQUFDLENBQUM7SUFFekQsSUFBSUYsZ0JBQWdCLEVBQUU7TUFDcEIsTUFBTSxJQUFJRyxLQUFLLDZCQUFzQkosSUFBSSxDQUFDLENBQUMsQ0FBQyxFQUFHO0lBQ2pEO0lBRUFKLG9CQUFvQixlQUFJSSxJQUFJLENBQUM7RUFDL0IsQ0FBQztBQUNILENBQUMsQ0FBQztBQUVGSyxTQUFTLENBQUMsWUFBTTtFQUNkZixNQUFNLENBQUNPLE9BQU8sQ0FBQ0MsS0FBSyxHQUFHRixvQkFBb0I7QUFDN0MsQ0FBQyxDQUFDIn0=
