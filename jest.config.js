@@ -9,7 +9,11 @@ const moduleAliasesMap = getAliases({ config: tsConfig, format: "jest" });
 const customConfig = {
   cacheDirectory: ".jest-cache",
   clearMocks: true,
-  collectCoverageFrom: ["<rootDir>/components/**/*.(t|j)s", "<rootDir>/utils/**/*.(t|j)s"],
+  collectCoverageFrom: [
+    "<rootDir>/components/**/*.{js,jsx,ts,tsx}",
+    "<rootDir>/utils/**/*.{js,ts}",
+    "!<rootDir>/**/index.{js,ts}",
+  ],
   coverageDirectory: "<rootDir>/coverage/",
   coveragePathIgnorePatterns: [],
   coverageThreshold: {
@@ -32,7 +36,7 @@ const customConfig = {
   reporters: ["default"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.tsx"],
   testEnvironment: "jest-environment-jsdom",
-  testMatch: ["<rootDir>/**/__tests__/*.test.(t|j)s"],
+  testMatch: ["<rootDir>/**/__tests__/*.test.{js,jsx,ts,tsx}"],
   testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"],
   transform: {
     "^.+\\.(t|j)sx?$": ["@swc/jest", { jsc: { target: "es2021" } }],

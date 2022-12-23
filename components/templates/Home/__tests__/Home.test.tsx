@@ -12,6 +12,6 @@ describe("<Home />", () => {
   });
 
   it("renders heading", () => {
-    expect(screen.getByRole("heading")).toHaveTextContent("Hi there, I'm Alex!");
+    expect(screen.getAllByRole("heading")[0]).toHaveTextContent("Hi there, I'm Alex!");
   });
 });

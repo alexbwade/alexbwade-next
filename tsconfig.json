@@ -10,7 +10,7 @@
       "~templates": ["./components/templates/index.js"]
     },
     "target": "es2017",
-    "types": ["node", "jest"],
+    "types": ["node", "jest", "@testing-library/jest-dom"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
