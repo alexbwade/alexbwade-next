@@ -1,12 +1,8 @@
 import "@testing-library/jest-dom/extend-expect";
 import "regenerator-runtime/runtime";
 
-global.simpleMock = (mockName) => {
-  return eval(`const ${mockName} = props => { return props.children || null }; ${mockName}`); // eslint-disable-line no-eval
-};
-
-global.componentMock = (mockName) => {
-  return (props) => <div data-testid={mockName}>{props.children}</div>; // eslint-disable-line
+global.componentMock = (mockName: string) => {
+  return (props: any = {}) => <div data-testid={mockName}>{props.children}</div>; // eslint-disable-line
 };
 
 // Fail on prop type errors
@@ -30,7 +26,7 @@ afterEach(() => {
 
 jest.mock("next/image", () => ({
   __esModule: true,
-  default: (props) => {
+  default: (props: any) => {
     // eslint-disable-next-line
     return <img {...props} />;
   },

@@ -1,12 +1,15 @@
+const nextJest = require("next/jest");
+const createJestConfig = nextJest({ dir: "./" });
+
 const tsConfig = require("./tsconfig.json");
 const getAliases = require("./config/aliases.js");
 
 const moduleAliasesMap = getAliases({ config: tsConfig, format: "jest" });
 
-module.exports = {
+const customConfig = {
   cacheDirectory: ".jest-cache",
   clearMocks: true,
-  collectCoverageFrom: ["<rootDir>/components/**/*.js", "<rootDir>/utils/**/*.js"],
+  collectCoverageFrom: ["<rootDir>/components/**/*.(t|j)s", "<rootDir>/utils/**/*.(t|j)s"],
   coverageDirectory: "<rootDir>/coverage/",
   coveragePathIgnorePatterns: [],
   coverageThreshold: {
@@ -19,7 +22,7 @@ module.exports = {
   },
   coverageReporters: ["json-summary", "html"],
   moduleDirectories: ["node_modules", "src"],
-  moduleFileExtensions: ["js", "json", "ts", "tsx"],
+  moduleFileExtensions: ["js", "json", "ts", "tsx", "json", "node"],
   moduleNameMapper: {
     "\\.module.scss$": "identity-obj-proxy",
     "\\.scss$": "<rootDir>/config/jest/emptyStringMock.js",
@@ -27,13 +30,15 @@ module.exports = {
     ...moduleAliasesMap,
   },
   reporters: ["default"],
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.tsx"],
   testEnvironment: "jest-environment-jsdom",
-  testMatch: ["<rootDir>/**/__tests__/*.test.js"],
+  testMatch: ["<rootDir>/**/__tests__/*.test.(t|j)s"],
   testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"],
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": ["babel-jest", { presets: ["next/babel"] }],
+    "^.+\\.(t|j)sx?$": ["@swc/jest", { jsc: { target: "es2021" } }],
   },
   transformIgnorePatterns: ["/node_modules/(?!react-file-drop)"],
   verbose: true,
 };
+
+module.exports = createJestConfig(customConfig);

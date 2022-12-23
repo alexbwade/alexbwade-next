@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <Head>
         <title>Alex Wade</title>
-        <meta name="description" content="Alex Wade personal website" />
+        <meta name="description" content="Alex Wade - developer portfolio" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
