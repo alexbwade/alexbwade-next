@@ -35,14 +35,9 @@ jobs:
           eslint: true
           prettier: true
 
-      - name: Jest coverage report
-        uses: ArtiomTr/jest-coverage-report-action@v2.1.2
-        id: coverage
+      - name: Jest Annotations & Coverage
+        uses: mattallty/jest-github-action@v1.0.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          test-script: yarn test:coverage
-          output: report-markdown
-
-      # - name: Comments
-      # - uses: marocchino/sticky-pull-request-comment@v2
-      #   with:
-      #     message: ${{ steps.coverage.outputs.report }}
+          test-command: "yarn test:coverage"
