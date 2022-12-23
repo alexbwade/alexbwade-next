@@ -42,7 +42,7 @@ jobs:
           test-script: yarn test
           output: report-markdown
 
-      - name: Comments
-      - uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          message: ${{ steps.coverage.outputs.report }}
+      # - name: Comments
+      # - uses: marocchino/sticky-pull-request-comment@v2
+      #   with:
+      #     message: ${{ steps.coverage.outputs.report }}
