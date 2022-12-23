@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import "@testing-library/jest-dom/extend-expect";
 import "regenerator-runtime/runtime";
 
 global.componentMock = (mockName: string) => {
-  return (props: any = {}) => <div data-testid={mockName}>{props.children}</div>; // eslint-disable-line
+  return (props: any = {}) => <div data-testid={mockName}>{props.children}</div>;
 };
 
 // Fail on prop type errors
