@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Mulish } from "@next/font/google";
-import { Home as HomeComponent } from "../components/templates";
+
+import { Home as HomeComponent } from "~templates";
 
 const font = Mulish({ subsets: ["latin"] });
 

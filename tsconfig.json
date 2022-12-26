@@ -2,12 +2,18 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~constants": ["./constants/index.js"],
-      "~utils": ["utils/index.ts"],
-      "~widgets": ["./components/widgets/index.js"],
-      "~elements": ["./components/elements/index.js"],
-      "~partials": ["./components/partials/index.js"],
-      "~templates": ["./components/templates/index.js"]
+      "~constants": ["./constants/index.ts"],
+      "~constants/*": ["./constants/*"],
+      "~utils": ["./utils/index.ts"],
+      "~utils/*": ["./utils/*"],
+      "~widgets": ["./components/widgets/index.ts"],
+      "~widgets/*": ["./components/widgets/*"],
+      "~elements": ["./components/elements/index.ts"],
+      "~elements/*": ["./components/elements/*"],
+      "~partials": ["./components/partials/index.ts"],
+      "~partials/*": ["./components/partials/*"],
+      "~templates": ["./components/templates/index.ts"],
+      "~templates/*": ["./components/templates/*"]
     },
     "target": "es2017",
     "types": ["node", "jest", "@testing-library/jest-dom"],

@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
 
-import Home from "../Home";
+import ExampleWidget from "../ExampleWidget";
 
 describe("<Home />", () => {
   beforeEach(() => {
-    render(<Home />);
+    render(<ExampleWidget />);
   });
 
   it("renders heading", () => {
-    expect(screen.getAllByRole("heading")[0]).toHaveTextContent("Hi there, I'm Alex!");
+    expect(screen.getAllByRole("heading")[0]).toHaveTextContent("Hello world!");
   });
 });
