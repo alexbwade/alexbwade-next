@@ -1,6 +1,7 @@
 const QUERY_DELIMITER = "?";
 const PARAM_DELIMITER = "&";
 
+// should maybe be global type
 interface SerializableObject {
   [key: string]: string | number | boolean | SerializableObject | SerializableObject[];
 }

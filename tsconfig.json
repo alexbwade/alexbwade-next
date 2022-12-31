@@ -6,6 +6,8 @@
       "~constants/*": ["./constants/*"],
       "~utils": ["./utils/index.ts"],
       "~utils/*": ["./utils/*"],
+      "~hooks": ["./hooks/index.ts"],
+      "~hooks/*": ["./hooks/*"],
       "~widgets": ["./components/widgets/index.ts"],
       "~widgets/*": ["./components/widgets/*"],
       "~elements": ["./components/elements/index.ts"],
