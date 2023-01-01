@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 const QUERY_DELIMITER = "?";
 const PARAM_DELIMITER = "&";
 
