@@ -1827,6 +1827,11 @@ domexception@^4.0.0:
   dependencies:
     webidl-conversions "^7.0.0"
 
+edgedb@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/edgedb/-/edgedb-1.0.2.tgz#54aca723fe1f344df2da571a37f74ad24fa3ade5"
+  integrity sha512-p5thPFs6LVZVTvofyh6ZLef2cuvZTr1F8hRFQACwb9DvKjQErUQrmPWCRtcdJpfTSqpTd69RYJxcwr3t7T6ISg==
+
 electron-to-chromium@^1.4.251:
   version "1.4.284"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.284.tgz#61046d1e4cab3a25238f6bf7413795270f125592"
