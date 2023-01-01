@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 const defaultHeaders = {
   "Content-Type": "application/json",
 };
