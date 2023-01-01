@@ -7,16 +7,7 @@ import { createClient } from "edgedb";
 const client = createClient();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // const result: string | number | null = await client.querySingle(`select random()`);
-
-  const result = await client.querySingle(`select User {
-    password,
-    email,
-    id,
-    name,
-    settings: {
-      salutation
-    }}`);
+  const result: string | number | null = await client.querySingle(`select random()`);
 
   res.status(200).json(result);
 }

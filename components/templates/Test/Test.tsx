@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { useFetchJson } from "~hooks";
 
 import styles from "./Test.module.scss";
