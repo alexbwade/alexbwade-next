@@ -1,21 +1,21 @@
 import Head from "next/head";
 import { Mulish } from "@next/font/google";
 
-import { Test as TestComponent } from "~templates";
+import { Users as UsersComponent } from "~templates";
 
 const font = Mulish({ subsets: ["latin"] });
 
-export default function Test() {
+export default function Users() {
   return (
     <>
       <Head>
-        <title>Test page</title>
-        <meta name="description" content="Test page" />
+        <title>Users page</title>
+        <meta name="description" content="Users page" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={font.className}>
-        <TestComponent />
+        <UsersComponent />
       </div>
     </>
   );

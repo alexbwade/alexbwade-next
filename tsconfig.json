@@ -8,6 +8,8 @@
       "~utils/*": ["./utils/*"],
       "~hooks": ["./hooks/index.ts"],
       "~hooks/*": ["./hooks/*"],
+      "~db": ["./db/index.ts"],
+      "~db/*": ["./db/*"],
       "~widgets": ["./components/widgets/index.ts"],
       "~widgets/*": ["./components/widgets/*"],
       "~elements": ["./components/elements/index.ts"],
@@ -34,5 +36,5 @@
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "**/*.edgeql"]
 }
