@@ -1,4 +1,6 @@
 module default {
+  # scalar type Role extending enum<Guest, Member, Admin, SuperAdmin>;
+
   abstract type Auditable {
     annotation description := "Add 'created_at' and 'updated_at' properties.";
     property created_at -> datetime {
@@ -29,15 +31,15 @@ module default {
       constraint min_len_value(8);
       constraint max_len_value(20);
     };
-    property first_name -> str {
-      constraint min_len_value(1);
+    required property first_name -> str {
       constraint max_len_value(50);
+      default := '';
     };
-    property last_name -> str {
-      constraint min_len_value(1);
+    required property last_name -> str {
       constraint max_len_value(50);
+      default := '';
     };
-    property name := .first_name ++ ' ' ++ .last_name;
+    property name := str_trim(.first_name ++ ' ' ++ .last_name);
     link role -> Role {
       constraint exclusive; # can only have 1 role at a time
     };
