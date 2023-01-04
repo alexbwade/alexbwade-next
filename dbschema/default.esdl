@@ -27,7 +27,7 @@ module default {
     };
     required property password -> str {
       constraint min_len_value(8);
-      constraint max_len_value(20);
+      constraint max_len_value(100);
     };
     required property first_name -> str {
       constraint max_len_value(50);
@@ -36,6 +36,9 @@ module default {
     required property last_name -> str {
       constraint max_len_value(50);
       default := '';
+    };
+    required property disabled -> bool {
+      default := false;
     };
     property name := str_trim(.first_name ++ ' ' ++ .last_name);
     link role -> Role {

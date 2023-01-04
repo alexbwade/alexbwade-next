@@ -68,15 +68,15 @@ export default function UsersList(props: UsersListProps): JSX.Element {
                   </Anchor>
                 </td>
                 <td>
-                  <Select data={Object.values(ROLES)} defaultValue={user.role} variant="unstyled" />
+                  <Select data={Object.values(ROLES)} defaultValue={user.role?.name} variant="unstyled" />
                 </td>
                 <td>
-                  {Math.random() > 0.5 ? (
-                    <Badge fullWidth>Active</Badge>
-                  ) : (
+                  {user.disabled ? (
                     <Badge color="gray" fullWidth>
                       Disabled
                     </Badge>
+                  ) : (
+                    <Badge fullWidth>Active</Badge>
                   )}
                 </td>
                 <td>

@@ -1,6 +1,7 @@
 /* eslint-disable */
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
+import bcrypt from "bcrypt";
 
 import { getUsers, updateUser, deleteUser, createUser } from "~db";
 
@@ -21,6 +22,10 @@ function getSanitizedParams(requestBody: Record<string, string>) {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   let result;
   const params = getSanitizedParams(req.body);
+
+  if (params.password) {
+    params.password = await bcrypt.hash(params.password, 10);
+  }
 
   switch (req.query.type) {
     case "create":

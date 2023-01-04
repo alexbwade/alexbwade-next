@@ -3,7 +3,10 @@ select User {
   first_name,
   last_name,
   email,
-  role,
+  disabled,
+  role: {
+    name
+  },
   settings: {
     salutation
   }
