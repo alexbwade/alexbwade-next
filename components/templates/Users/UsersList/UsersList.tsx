@@ -1,20 +1,22 @@
 /* istanbul ignore file */
-import { Avatar, Badge, Table, Group, Text, ActionIcon, Anchor, ScrollArea, Select } from "@mantine/core";
+import { Avatar, Badge, Table, Group, Text, ActionIcon, Anchor, ScrollArea } from "@mantine/core";
 import { IconPencil, IconTrash } from "@tabler/icons";
 
-import { ROLES } from "~constants";
 import { useFetchJson } from "~hooks";
 import { fetchJson } from "~utils";
 import type { User } from "~types";
 
+import EditUser from "../EditUser";
+
 type UsersListProps = {
   fetchCount: number;
+  userToEdit: User;
   setFetchCount: React.Dispatch<React.SetStateAction<number>>;
   setUserToEdit: React.Dispatch<React.SetStateAction<User | null>>;
 };
 
 export default function UsersList(props: UsersListProps): JSX.Element {
-  const { fetchCount, setFetchCount, setUserToEdit } = props;
+  const { fetchCount, userToEdit, setFetchCount, setUserToEdit } = props;
 
   const res = useFetchJson("/api/users", {
     dependencies: [fetchCount],
@@ -52,45 +54,49 @@ export default function UsersList(props: UsersListProps): JSX.Element {
         </thead>
         {users && Array.isArray(users) && users.length ? (
           <tbody>
-            {users.map((user) => (
-              <tr key={user.name}>
-                <td>
-                  <Group spacing="sm">
-                    <Avatar size={30} src={user.avatar} radius={30} />
-                    <Text size="sm" weight={500}>
-                      {user.name}
-                    </Text>
-                  </Group>
-                </td>
-                <td>
-                  <Anchor<"a"> size="sm" href="#" onClick={(event) => event.preventDefault()}>
-                    {user.email}
-                  </Anchor>
-                </td>
-                <td>
-                  <Select data={Object.values(ROLES)} defaultValue={user.role?.name} variant="unstyled" />
-                </td>
-                <td>
-                  {user.disabled ? (
-                    <Badge color="gray" fullWidth>
-                      Disabled
-                    </Badge>
-                  ) : (
-                    <Badge fullWidth>Active</Badge>
-                  )}
-                </td>
-                <td>
-                  <Group spacing={0} position="right">
-                    <ActionIcon>
-                      <IconPencil size={18} stroke={1.5} onClick={() => setUserToEdit(user)} />
-                    </ActionIcon>
-                    <ActionIcon color="red" onClick={() => handleDeleteUser(user.email)}>
-                      <IconTrash size={18} stroke={1.5} />
-                    </ActionIcon>
-                  </Group>
-                </td>
-              </tr>
-            ))}
+            {users.map((user) => {
+              if (userToEdit && userToEdit?.email === user.email) {
+                return <EditUser user={user} setUserToEdit={setUserToEdit} />;
+              }
+
+              return (
+                <tr key={user.name}>
+                  <td>
+                    <Group spacing="sm">
+                      <Avatar size={30} src={user.avatar} radius={30} />
+                      <Text size="sm" weight={500}>
+                        {user.name}
+                      </Text>
+                    </Group>
+                  </td>
+                  <td>
+                    <Anchor<"a"> size="sm" href="#" onClick={(event) => event.preventDefault()}>
+                      {user.email}
+                    </Anchor>
+                  </td>
+                  <td>{user.role?.name}</td>
+                  <td>
+                    {user.disabled ? (
+                      <Badge color="gray" fullWidth>
+                        Disabled
+                      </Badge>
+                    ) : (
+                      <Badge fullWidth>Active</Badge>
+                    )}
+                  </td>
+                  <td>
+                    <Group spacing={0} position="right">
+                      <ActionIcon>
+                        <IconPencil size={18} stroke={1.5} onClick={() => setUserToEdit(user)} />
+                      </ActionIcon>
+                      <ActionIcon color="red" onClick={() => handleDeleteUser(user.email)}>
+                        <IconTrash size={18} stroke={1.5} />
+                      </ActionIcon>
+                    </Group>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         ) : null}
       </Table>

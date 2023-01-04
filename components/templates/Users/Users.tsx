@@ -29,8 +29,13 @@ export default function Users(): JSX.Element {
   return (
     <div className={styles.wrapper}>
       <h1>Users</h1>
-      <UsersList fetchCount={fetchCount} setFetchCount={setFetchCount} setUserToEdit={setUserToEdit} />
-      {userToEdit ? <EditUser user={userToEdit} setUserToEdit={setUserToEdit} /> : null}
+      <UsersList
+        fetchCount={fetchCount}
+        setFetchCount={setFetchCount}
+        userToEdit={userToEdit}
+        setUserToEdit={setUserToEdit}
+      />
+      {/* {userToEdit ? <EditUser user={userToEdit} setUserToEdit={setUserToEdit} /> : null} */}
       <Divider style={{ marginBottom: "20px" }} />
       {creatingUser ? (
         <CreateUser setFetchCount={setFetchCount} setCreatingUser={setCreatingUser} />
