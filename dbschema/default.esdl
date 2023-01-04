@@ -1,7 +1,27 @@
 module default {
-  type User {
+  abstract type Auditable {
+    annotation description := "Add 'created_at' and 'updated_at' properties.";
+    property created_at -> datetime {
+      readonly := true;
+      default := datetime_current();
+    }
+    property updated_at -> datetime {
+      default := datetime_current();
+    }
+  }
+
+  abstract type Named {
+    annotation description := "Add required unique 'name' property.";
+    required property name -> str {
+      constraint exclusive; # must be unique in system
+      constraint min_len_value(1);
+      constraint max_len_value(50);
+    }
+  }
+
+  type User extending Auditable {
     required property email -> str {
-      constraint exclusive; # must be unique
+      constraint exclusive; # must be unique in system
       constraint min_len_value(5);
       constraint max_len_value(254);
     };
@@ -9,10 +29,15 @@ module default {
       constraint min_len_value(8);
       constraint max_len_value(20);
     };
-    property name -> str {
-      constraint min_len_value(1);
+    required property first_name -> str {
       constraint max_len_value(50);
+      default := '';
     };
+    required property last_name -> str {
+      constraint max_len_value(50);
+      default := '';
+    };
+    property name := str_trim(.first_name ++ ' ' ++ .last_name);
     link role -> Role {
       constraint exclusive; # can only have 1 role at a time
     };
@@ -30,19 +55,13 @@ module default {
     property salutation -> str; # example
   }
 
-  type Role {
-    required property name -> str {
-      constraint exclusive; # must be unique in system
-    };
+  type Role extending Named {
     multi link users -> User;
     multi link permissions -> Permission;
     index on (.name);
   }
 
-  type Permission {
-    required property name -> str {
-      constraint exclusive; # must be unique in system
-    };
+  type Permission extending Named {
     multi link roles -> Role;
     index on (.name);
   }

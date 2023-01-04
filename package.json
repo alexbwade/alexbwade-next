@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "bootstrap": "(example only) yarn && edgedb project init && node ./db/seeds.ts",
+    "dev": "edgedb instance start -I alexbwade_next && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint **/*.{js,jsx,ts,tsx} -c .eslintrc.js",
@@ -46,6 +47,7 @@
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
     "prettier": "^2.8.1",
+    "raw-loader": "^4.0.2",
     "sass": "^1.57.1",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1"

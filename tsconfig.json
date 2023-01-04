@@ -8,6 +8,10 @@
       "~utils/*": ["./utils/*"],
       "~hooks": ["./hooks/index.ts"],
       "~hooks/*": ["./hooks/*"],
+      "~db": ["./db/index.ts"],
+      "~db/*": ["./db/*"],
+      "~types": ["./types/index.ts"],
+      "~types/*": ["./types/*"],
       "~widgets": ["./components/widgets/index.ts"],
       "~widgets/*": ["./components/widgets/*"],
       "~elements": ["./components/elements/index.ts"],
@@ -17,6 +21,7 @@
       "~templates": ["./components/templates/index.ts"],
       "~templates/*": ["./components/templates/*"]
     },
+    "downlevelIteration": true,
     "target": "es2017",
     "types": ["node", "jest", "@testing-library/jest-dom"],
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -34,5 +39,5 @@
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "**/*.edgeql"]
 }

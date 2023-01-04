@@ -14,7 +14,7 @@ interface SerializableObject {
  * @returns {string} a query string
  * @example toQueryString({ foo: 'bar', baz: 1 }) // => 'foo=bar&baz=1'
  */
-export default function toQueryString(params: SerializableObject, includeQueryDelimiter: boolean = false): string {
+export default function toQueryString(params: SerializableObject, includeQueryDelimiter = false): string {
   const query = Object.entries(params)
     .map(([key, value]) => `${key}=${String(value)}`)
     .join(PARAM_DELIMITER);
