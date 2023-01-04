@@ -3,9 +3,10 @@ import db from "~db";
 async function run() {
   await db.execute(`
     insert User {
-      first_name := "John",
-      last_name := "Doe",
-      email := "idk@test.com"
+      first_name := "Alex",
+      last_name := "Wade",
+      email := "idk@test.com",
+      password := "??"
     };`);
 
   console.log("Seeds added.");

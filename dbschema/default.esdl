@@ -1,6 +1,4 @@
 module default {
-  # scalar type Role extending enum<Guest, Member, Admin, SuperAdmin>;
-
   abstract type Auditable {
     annotation description := "Add 'created_at' and 'updated_at' properties.";
     property created_at -> datetime {
@@ -23,7 +21,7 @@ module default {
 
   type User extending Auditable {
     required property email -> str {
-      constraint exclusive; # must be unique
+      constraint exclusive; # must be unique in system
       constraint min_len_value(5);
       constraint max_len_value(254);
     };
