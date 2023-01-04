@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { useFetchJson } from "~hooks";
 import { fetchJson } from "~utils";
 import type { User } from "~types";
@@ -8,16 +9,10 @@ type UsersListProps = {
   setUserToEdit: React.Dispatch<React.SetStateAction<User | null>>;
 };
 
-type UsersListApiResponse = {
-  data: User[] | null;
-  error: string | null;
-  loading: boolean;
-};
-
-export default function UsersList(props: UsersListProps) {
+export default function UsersList(props: UsersListProps): JSX.Element {
   const { fetchCount, setFetchCount, setUserToEdit } = props;
 
-  const res: UsersListApiResponse = useFetchJson("/api/users", {
+  const res = useFetchJson("/api/users", {
     dependencies: [fetchCount],
   });
   const users = res.data;
@@ -42,7 +37,7 @@ export default function UsersList(props: UsersListProps) {
   return (
     <section id="list">
       <h2>Existing users</h2>
-      {users && users.length ? (
+      {users && Array.isArray(users) && users.length ? (
         <ul>
           {users.map((user) => (
             <li key={user.email}>

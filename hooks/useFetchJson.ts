@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 
 import { fetchJson, getErrorMessage } from "~utils";
 
-type StandardData = Array<unknown> | Record<string, unknown> | number | null;
-
-type NormalizedResponse = {
-  data?: StandardData;
-  error?: unknown;
-  aborted?: boolean;
-};
+import type {
+  FetchJsonData,
+  FetchJsonResponse,
+  UseFetchJsonResponse,
+  UseFetchJsonLoading,
+  UseFetchJsonErrorMessage,
+} from "~types";
 
 type FetchOptions = {
   params?: object | null;
@@ -25,16 +25,16 @@ type FetchOptions = {
  * @param {boolean} options.condition under what condition should the fetch be executed
  * @returns
  */
-export default function useFetchJson(url: string, options: FetchOptions = {}) {
+export default function useFetchJson(url: string, options: FetchOptions = {}): UseFetchJsonResponse {
   if (!url) {
     throw new Error("useFetchJson requires a url");
   }
 
   const { params = null, condition = true, dependencies = [] } = options;
 
-  const [data, setData] = useState<StandardData>(null);
-  const [loading, setLoading] = useState(condition);
-  const [error, setError] = useState<string | null>(null);
+  const [data, setData] = useState<FetchJsonData>(null);
+  const [loading, setLoading] = useState<UseFetchJsonLoading>(condition);
+  const [error, setError] = useState<UseFetchJsonErrorMessage>(null);
 
   useEffect(() => {
     if (!condition) return;
@@ -44,7 +44,7 @@ export default function useFetchJson(url: string, options: FetchOptions = {}) {
     const getData = async () => {
       setLoading(true);
 
-      const res: NormalizedResponse = await fetchJson(url, { ...params, signal: controller.signal });
+      const res: FetchJsonResponse = await fetchJson(url, { ...params, signal: controller.signal });
       if (res.aborted) {
         return;
       }

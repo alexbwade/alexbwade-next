@@ -10,6 +10,7 @@ const defaultHeaders = {
  * @param {Object} params the parameters to pass to fetch
  * @returns {Promise<{data: Object, error: Error}>} the HTTP response data or an error
  */
+
 export default async function fetchJson(url: string, params: RequestInit) {
   try {
     const res = await fetch(url, {

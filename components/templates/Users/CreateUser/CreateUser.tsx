@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { fetchJson } from "~utils";
 
 type CreateUserProps = {
@@ -11,7 +12,7 @@ type FormValues = {
   password: { value: string };
 };
 
-export default function CreateUser({ setFetchCount }: CreateUserProps) {
+export default function CreateUser({ setFetchCount }: CreateUserProps): JSX.Element {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 

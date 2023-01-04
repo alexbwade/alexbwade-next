@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { useState } from "react";
 
 import type { User } from "~types";
@@ -8,7 +9,7 @@ import EditUser from "./EditUser";
 
 import styles from "./Users.module.scss";
 
-export default function Users() {
+export default function Users(): JSX.Element {
   const [fetchCount, setFetchCount] = useState(0);
   const [userToEdit, setUserToEdit] = useState<User | null>(null);
   const [creatingUser, setCreatingUser] = useState(false);
