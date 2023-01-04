@@ -6,7 +6,7 @@ import { getUsersQuery, createUserQuery, deleteUserQuery, updateUserQuery } from
 const client = createClient();
 
 function createDbQuery(dbClient: Executor, dbQuery: string) {
-  return async function runQuery(params?: any) {
+  return async function runQuery(params?: Record<string, unknown>) {
     return dbClient.query(dbQuery, params);
   };
 }

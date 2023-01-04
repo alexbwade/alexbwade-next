@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 
 import { fetchJson, getErrorMessage } from "~utils";
 
+type StandardData = Array<unknown> | Record<string, unknown> | number | null;
+
 type NormalizedResponse = {
-  data?: any;
+  data?: StandardData;
   error?: unknown;
   aborted?: boolean;
 };
@@ -30,7 +32,7 @@ export default function useFetchJson(url: string, options: FetchOptions = {}) {
 
   const { params = null, condition = true, dependencies = [] } = options;
 
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<StandardData>(null);
   const [loading, setLoading] = useState(condition);
   const [error, setError] = useState<string | null>(null);
 

@@ -20,7 +20,7 @@ export default async function fetchJson(url: string, params: RequestInit) {
 
     return { data: json };
   } catch (err) {
-    if (err instanceof DOMException && err.name == "AbortError") {
+    if (err instanceof DOMException && err.name === "AbortError") {
       return { aborted: true };
     }
 
