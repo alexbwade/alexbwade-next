@@ -7,7 +7,6 @@ import type { User } from "~types";
 
 import UsersList from "./UsersList";
 import CreateUser from "./CreateUser";
-import EditUser from "./EditUser";
 
 import styles from "./Users.module.scss";
 

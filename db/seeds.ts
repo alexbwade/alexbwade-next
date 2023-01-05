@@ -52,7 +52,7 @@ async function run() {
       last_name := "Wade",
       email := "alexbwade@gmail.com",
       role := role,
-      password := "lkasdldfkjasd"
+      password := "$2b$10$jUS9rAbSHmokRGMoCzQpSuk0m6sLYjbknYxRFQw2kmz3ZX/SaEzfi"
     } unless conflict on .email;
   `);
 
@@ -65,7 +65,7 @@ async function run() {
       last_name := "Ramirez",
       email := "karellyrmg@gmail.com",
       role := role,
-      password := "lkasdldfkjasd"
+      password := "$2b$10$jUS9rAbSHmokRGMoCzQpSuk0m6sLYjbknYxRFQw2kmz3ZX/SaEzfi"
     } unless conflict on .email;
   `);
 

@@ -6,7 +6,7 @@ import { useFetchJson } from "~hooks";
 import { fetchJson } from "~utils";
 import type { User } from "~types";
 
-import EditUser from "../EditUser";
+import EditUser from "../../EditUser";
 
 type UsersListProps = {
   fetchCount: number;

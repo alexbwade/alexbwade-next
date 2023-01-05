@@ -41,9 +41,7 @@ module default {
       default := false;
     };
     property name := str_trim(.first_name ++ ' ' ++ .last_name);
-    link role -> Role {
-      constraint exclusive; # can only have 1 role at a time
-    };
+    link role -> Role;
     link settings -> UserSettings {
       constraint exclusive; # 1-to-1 relationship with settings
       on target delete allow;

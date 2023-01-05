@@ -34,12 +34,12 @@ export default function EditUser(props: EditUserProps): JSX.Element {
     <tr key={user.name}>
       <td>
         <Group spacing="sm">
-          <TextInput label="First name" placeholder="Thomas" type="text" name="first_name" />
-          <TextInput label="Last name" placeholder="Jefferson" type="text" name="last_name" />
+          <TextInput label="First name" type="text" name="first_name" value={user.first_name} />
+          <TextInput label="Last name" type="text" name="last_name" value={user.last_name} />
         </Group>
       </td>
       <td>
-        <TextInput label="Email" type="text" name="email" withAsterisk />
+        <TextInput label="Email" type="text" name="email" value={user.email} withAsterisk />
       </td>
       <td>{user.role?.name}</td>
       <td>

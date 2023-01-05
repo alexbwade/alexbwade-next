@@ -1,7 +1,6 @@
 /* istanbul ignore file */
-import { Button, Select, TextInput, PasswordInput } from "@mantine/core";
+import { Button, TextInput, PasswordInput } from "@mantine/core";
 import { IconUserPlus, IconArrowNarrowLeft } from "@tabler/icons";
-import { ROLES } from "~constants";
 
 import { fetchJson } from "~utils";
 
@@ -17,7 +16,6 @@ type FormValues = {
   password: { value: string };
   first_name: { value: string };
   last_name: { value: string };
-  role: { value: string };
 };
 
 export default function CreateUser(props: CreateUserProps): JSX.Element {
@@ -35,7 +33,6 @@ export default function CreateUser(props: CreateUserProps): JSX.Element {
         password: target.password.value,
         first_name: target.first_name.value,
         last_name: target.last_name.value,
-        role: target.role.value,
       }),
     });
 
@@ -62,7 +59,6 @@ export default function CreateUser(props: CreateUserProps): JSX.Element {
         <PasswordInput name="password" label="Password" withAsterisk />
         <TextInput label="First name" placeholder="Thomas" type="text" name="first_name" />
         <TextInput label="Last name" placeholder="Jefferson" type="text" name="last_name" />
-        <Select label="Role" name="role" data={Object.values(ROLES)} defaultValue={ROLES.GUEST} />
         <div className={styles.buttons}>
           <Button
             leftIcon={<IconUserPlus />}
