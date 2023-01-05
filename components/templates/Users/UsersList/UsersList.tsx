@@ -56,7 +56,7 @@ export default function UsersList(props: UsersListProps): JSX.Element {
           <tbody>
             {users.map((user) => {
               if (userToEdit && userToEdit?.email === user.email) {
-                return <EditUser user={user} setUserToEdit={setUserToEdit} />;
+                return <EditUser key={user.name} user={user} setUserToEdit={setUserToEdit} />;
               }
 
               return (

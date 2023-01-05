@@ -1,13 +1,10 @@
 /* istanbul ignore file */
 import { useEffect } from "react";
 
-import { Button, Avatar, Badge, Table, Group, TextInput, ActionIcon, Anchor, ScrollArea, Select } from "@mantine/core";
-import { IconArrowNarrowLeft, IconPencil, IconTrash } from "@tabler/icons";
+import { Badge, Group, TextInput, ActionIcon } from "@mantine/core";
+import { IconPencil, IconTrash } from "@tabler/icons";
 
 import type { User } from "~types";
-import { ROLES } from "~constants";
-
-import styles from "./EditUser.module.scss";
 
 type EditUserProps = {
   user: User;
