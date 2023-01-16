@@ -11,6 +11,4 @@ select User {
     salutation
   }
 }
-order by
-  .name asc then
-  .email asc;
+filter .email = <str>$email;

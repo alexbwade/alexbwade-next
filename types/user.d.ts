@@ -5,6 +5,10 @@ interface User {
   name: string;
   first_name: string;
   last_name: string;
+  role: {
+    name: string;
+  };
+  disabled: boolean;
 }
 
 export default User;

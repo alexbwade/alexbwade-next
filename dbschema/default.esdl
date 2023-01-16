@@ -27,7 +27,7 @@ module default {
     };
     required property password -> str {
       constraint min_len_value(8);
-      constraint max_len_value(20);
+      constraint max_len_value(100);
     };
     required property first_name -> str {
       constraint max_len_value(50);
@@ -37,10 +37,11 @@ module default {
       constraint max_len_value(50);
       default := '';
     };
-    property name := str_trim(.first_name ++ ' ' ++ .last_name);
-    link role -> Role {
-      constraint exclusive; # can only have 1 role at a time
+    required property disabled -> bool {
+      default := false;
     };
+    property name := str_trim(.first_name ++ ' ' ++ .last_name);
+    link role -> Role;
     link settings -> UserSettings {
       constraint exclusive; # 1-to-1 relationship with settings
       on target delete allow;

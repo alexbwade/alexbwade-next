@@ -2,7 +2,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { getUsers, updateUser, deleteUser, createUser } from "~db";
+import { createUser } from "~db";
 
 function getSanitizedParams(requestBody: Record<string, string>) {
   const params: Record<string, string> = {};
@@ -18,23 +18,12 @@ function getSanitizedParams(requestBody: Record<string, string>) {
   return params;
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  let result;
+type CreateUserResultId = string | null;
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse<CreateUserResultId>) {
   const params = getSanitizedParams(req.body);
 
-  switch (req.query.type) {
-    case "create":
-      result = await createUser(params);
-      break;
-    case "update":
-      result = await updateUser(params);
-      break;
-    case "delete":
-      result = await deleteUser(params);
-      break;
-    default:
-      result = await getUsers();
-  }
+  const result = (await createUser(params)) as unknown as CreateUserResultId;
 
   res.status(200).json(result);
 }

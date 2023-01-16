@@ -1,7 +1,6 @@
+with params := json_array_unpack(<json>$params),
 update User
 filter .email = <str>$email
-set {
-  first_name := <str>$first_name,
-  last_name := <str>$last_name,
+set params union {
   updated_at: = <datetime>datetime_current()
 };
