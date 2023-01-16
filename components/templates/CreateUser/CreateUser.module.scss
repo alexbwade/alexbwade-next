@@ -14,8 +14,11 @@
 }
 
 .header {
+  margin-bottom: 30px;
+}
+
+.buttons {
+  margin-top: 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  justify-content: flex-end;
 }

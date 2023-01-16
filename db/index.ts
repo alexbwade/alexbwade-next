@@ -1,7 +1,7 @@
 import { createClient } from "edgedb";
 import type { Executor } from "edgedb";
 
-import { getUsersQuery, createUserQuery, deleteUserQuery, updateUserQuery } from "./queries";
+import { getUsersQuery, getUserByEmailQuery, createUserQuery, deleteUserQuery, updateUserQuery } from "./queries";
 
 const client = createClient();
 
@@ -15,6 +15,7 @@ export const getUsers = createDbQuery(client, getUsersQuery);
 export const createUser = createDbQuery(client, createUserQuery);
 export const updateUser = createDbQuery(client, updateUserQuery);
 export const deleteUser = createDbQuery(client, deleteUserQuery);
+export const getUserByEmail = createDbQuery(client, getUserByEmailQuery);
 
 // export async function connect() {
 //   await client.connect({

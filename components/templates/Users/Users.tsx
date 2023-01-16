@@ -1,23 +1,15 @@
 /* istanbul ignore file */
+import Link from "next/link";
 import { useState } from "react";
 import { Button, Divider } from "@mantine/core";
 import { IconUserPlus, IconArrowsShuffle } from "@tabler/icons";
 
-import type { User } from "~types";
-
 import UsersList from "./UsersList";
-import CreateUser from "./CreateUser";
 
 import styles from "./Users.module.scss";
 
 export default function Users(): JSX.Element {
   const [fetchCount, setFetchCount] = useState(0);
-  const [userToEdit, setUserToEdit] = useState<User | null>(null);
-  const [creatingUser, setCreatingUser] = useState(false);
-
-  const handleShowCreateUser = () => {
-    setCreatingUser(true);
-  };
 
   const handleCreateRandomUser = async () => {
     await fetch("/api/users?type=create-random", {
@@ -28,37 +20,29 @@ export default function Users(): JSX.Element {
   return (
     <div className={styles.wrapper}>
       <h1>Users</h1>
-      <UsersList
-        fetchCount={fetchCount}
-        setFetchCount={setFetchCount}
-        userToEdit={userToEdit}
-        setUserToEdit={setUserToEdit}
-      />
-      {/* {userToEdit ? <EditUser user={userToEdit} setUserToEdit={setUserToEdit} /> : null} */}
+      <UsersList fetchCount={fetchCount} setFetchCount={setFetchCount} />
       <Divider style={{ marginBottom: "20px" }} />
-      {creatingUser ? (
-        <CreateUser setFetchCount={setFetchCount} setCreatingUser={setCreatingUser} />
-      ) : (
-        <div className={styles.buttons}>
-          <Button
-            leftIcon={<IconArrowsShuffle />}
-            onClick={handleCreateRandomUser}
-            variant="white"
-            color="#ec8c69"
-            style={{ marginLeft: "10px", color: "#ec8c69" }}
-          >
-            Create test user
-          </Button>
+      <div className={styles.buttons}>
+        <Button
+          leftIcon={<IconArrowsShuffle />}
+          onClick={handleCreateRandomUser}
+          variant="white"
+          color="#ec8c69"
+          style={{ marginLeft: "10px", color: "#ec8c69" }}
+        >
+          Create test user
+        </Button>
+        <Link href="/users/create">
           <Button
             leftIcon={<IconUserPlus />}
             variant="gradient"
             gradient={{ from: "#ed6ea0", to: "#ec8c69", deg: 35 }}
-            onClick={handleShowCreateUser}
+            // onClick={handleShowCreateUser}
           >
             Create user
           </Button>
-        </div>
-      )}
+        </Link>
+      </div>
     </div>
   );
 }

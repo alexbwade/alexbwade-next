@@ -1,85 +1,99 @@
 /* istanbul ignore file */
-import { useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
-import { Badge, Group, TextInput, ActionIcon } from "@mantine/core";
-import { IconPencil, IconTrash } from "@tabler/icons";
+import { Switch, Button, Group, TextInput, PasswordInput, Select } from "@mantine/core";
+import { IconArrowNarrowLeft } from "@tabler/icons";
 
+import { ROLES } from "~constants";
 import type { User } from "~types";
 
-type EditUserProps = {
-  user: User;
-  setUserToEdit: React.Dispatch<React.SetStateAction<User | null>>;
-};
+import styles from "./EditUser.module.scss";
 
-export default function EditUser(props: EditUserProps): JSX.Element {
-  const { user, setUserToEdit } = props;
+export default function EditUser(): JSX.Element {
+  const router = useRouter();
+  const { email } = router.query;
+
+  const [user, setUser] = useState<User | null>(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [userEmail, setUserEmail] = useState(email);
+  const [role, setRole] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
-    const handleEscape = (event: KeyboardEvent): void => {
-      if (event.key === "Escape") {
-        setUserToEdit(null);
+    if (!email) return;
+
+    const fetchUser = async (): Promise<void> => {
+      const response = await fetch(`/api/users?type=get&email=${email}`);
+      const data = await response.json();
+
+      setUser(data[0]);
+
+      if (data[0]) {
+        setFirstName(data[0].first_name);
+        setLastName(data[0].last_name);
+        setRole(data[0].role?.name);
       }
     };
-    document.addEventListener("keydown", handleEscape);
 
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, []);
+    fetchUser();
+  }, [email]);
+
+  if (!user) return <p>Loading...</p>;
+
+  const handleChangeFirstName = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setFirstName(event.target.value);
+  };
+
+  const handleChangeLastName = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setLastName(event.target.value);
+  };
+
+  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setUserEmail(event.target.value);
+  };
+
+  const handleChangeRole = (value: string | null): void => {
+    setRole(value || "");
+  };
+
+  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setPassword(event.target.value);
+  };
 
   return (
-    <tr key={user.name}>
-      <td>
-        <Group spacing="sm">
-          <TextInput label="First name" type="text" name="first_name" value={user.first_name} />
-          <TextInput label="Last name" type="text" name="last_name" value={user.last_name} />
-        </Group>
-      </td>
-      <td>
-        <TextInput label="Email" type="text" name="email" value={user.email} withAsterisk />
-      </td>
-      <td>{user.role?.name}</td>
-      <td>
-        {user.disabled ? (
-          <Badge color="gray" fullWidth>
-            Disabled
-          </Badge>
-        ) : (
-          <Badge fullWidth>Active</Badge>
-        )}
-      </td>
-      <td>
-        <Group spacing={0} position="right">
-          <ActionIcon style={{ visibility: "hidden" }}>
-            <IconPencil size={18} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon color="red">
-            <IconTrash size={18} stroke={1.5} />
-          </ActionIcon>
-        </Group>
-      </td>
-    </tr>
+    <section id="create" className={styles.wrapper}>
+      <Link href="/users">
+        <Button className={styles.backButton} leftIcon={<IconArrowNarrowLeft />} variant="white">
+          Back
+        </Button>
+      </Link>
+      <TextInput label="Email" type="text" name="email" value={userEmail} onChange={handleChangeEmail} withAsterisk />
+      <PasswordInput
+        name="password"
+        value={password}
+        onChange={handleChangePassword}
+        placeholder="Your password"
+        label="Password"
+        required
+        withAsterisk
+      />
+      <Group spacing="sm">
+        <TextInput
+          name="first_name"
+          label="First name"
+          type="text"
+          value={firstName}
+          onChange={handleChangeFirstName}
+        />
+        <TextInput label="Last name" type="text" name="last_name" value={lastName} onChange={handleChangeLastName} />
+      </Group>
+      <Group spacing="sm">
+        <Select label="Role" data={Object.values(ROLES)} value={role} onChange={handleChangeRole} />
+      </Group>
+      <Switch label="Disable account" checked={user.disabled} />
+    </section>
   );
-
-  // return (
-  //   <section>
-  //     <header className={styles.header}>
-  //       <h2>Editing {user.name || user.email}</h2>
-  //       <Button
-  //         leftIcon={<IconArrowNarrowLeft />}
-  //         onClick={() => setUserToEdit(null)}
-  //         variant="white"
-  //         color="#ec8c69"
-  //         style={{ color: "#ec8c69" }}
-  //       >
-  //         Back
-  //       </Button>
-  //     </header>
-
-  //     <Select data={Object.values(ROLES)} defaultValue={user.role?.name} variant="unstyled" />
-
-  //     <p>{user.email}</p>
-
-  //   </section>
-  // );
 }

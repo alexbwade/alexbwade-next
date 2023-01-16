@@ -1,22 +1,18 @@
 /* istanbul ignore file */
+import Link from "next/link";
 import { Avatar, Badge, Table, Group, Text, ActionIcon, Anchor, ScrollArea } from "@mantine/core";
 import { IconPencil, IconTrash } from "@tabler/icons";
 
 import { useFetchJson } from "~hooks";
 import { fetchJson } from "~utils";
-import type { User } from "~types";
-
-import EditUser from "../../EditUser";
 
 type UsersListProps = {
   fetchCount: number;
-  userToEdit: User;
   setFetchCount: React.Dispatch<React.SetStateAction<number>>;
-  setUserToEdit: React.Dispatch<React.SetStateAction<User | null>>;
 };
 
 export default function UsersList(props: UsersListProps): JSX.Element {
-  const { fetchCount, userToEdit, setFetchCount, setUserToEdit } = props;
+  const { fetchCount, setFetchCount } = props;
 
   const res = useFetchJson("/api/users", {
     dependencies: [fetchCount],
@@ -24,6 +20,9 @@ export default function UsersList(props: UsersListProps): JSX.Element {
   const users = res.data;
 
   const handleDeleteUser = async (email: string): Promise<void> => {
+    if (!window.confirm(`Are you sure you want to delete the following user?\n\n${email}`)) {
+      return;
+    }
     await fetchJson("/api/users?type=delete", {
       method: "POST",
       body: JSON.stringify({ email }),
@@ -55,10 +54,6 @@ export default function UsersList(props: UsersListProps): JSX.Element {
         {users && Array.isArray(users) && users.length ? (
           <tbody>
             {users.map((user) => {
-              if (userToEdit && userToEdit?.email === user.email) {
-                return <EditUser key={user.name} user={user} setUserToEdit={setUserToEdit} />;
-              }
-
               return (
                 <tr key={user.name}>
                   <td>
@@ -86,9 +81,11 @@ export default function UsersList(props: UsersListProps): JSX.Element {
                   </td>
                   <td>
                     <Group spacing={0} position="right">
-                      <ActionIcon>
-                        <IconPencil size={18} stroke={1.5} onClick={() => setUserToEdit(user)} />
-                      </ActionIcon>
+                      <Link href={`/users/edit/${user.email}`}>
+                        <ActionIcon>
+                          <IconPencil size={18} stroke={1.5} />
+                        </ActionIcon>
+                      </Link>
                       <ActionIcon color="red" onClick={() => handleDeleteUser(user.email)}>
                         <IconTrash size={18} stroke={1.5} />
                       </ActionIcon>

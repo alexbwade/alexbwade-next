@@ -3,7 +3,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcrypt";
 
-import { getUsers, updateUser, deleteUser, createUser } from "~db";
+import { getUsers, updateUser, deleteUser, createUser, getUserByEmail } from "~db";
 
 function getSanitizedParams(requestBody: Record<string, string>) {
   const params: Record<string, string> = {};
@@ -36,6 +36,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       break;
     case "delete":
       result = await deleteUser(params);
+      break;
+    case "get":
+      const { email } = req.query;
+      result = await getUserByEmail({ email });
       break;
     default:
       result = await getUsers();

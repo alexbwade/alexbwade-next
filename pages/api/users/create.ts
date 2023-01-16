@@ -23,7 +23,7 @@ type CreateUserResultId = string | null;
 export default async function handler(req: NextApiRequest, res: NextApiResponse<CreateUserResultId>) {
   const params = getSanitizedParams(req.body);
 
-  const result = (await createUser(params)) as CreateUserResultId;
+  const result = (await createUser(params)) as unknown as CreateUserResultId;
 
   res.status(200).json(result);
 }

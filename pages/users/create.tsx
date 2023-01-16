@@ -1,21 +1,21 @@
 import Head from "next/head";
 import { Mulish } from "@next/font/google";
 
-import { Users as UsersComponent } from "~templates";
+import { CreateUser as CreateUserComponent } from "~templates";
 
 const font = Mulish({ subsets: ["latin"] });
 
-export default function Users() {
+export default function CreateUser() {
   return (
     <>
       <Head>
-        <title>Users page</title>
-        <meta name="description" content="Users page" />
+        <title>Create user</title>
+        <meta name="description" content="Create user" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={font.className}>
-        <UsersComponent />
+        <CreateUserComponent />
       </div>
     </>
   );
