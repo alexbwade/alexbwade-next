@@ -26,7 +26,7 @@ const customConfig = {
   },
   coverageReporters: ["json-summary", "html"],
   moduleDirectories: ["node_modules", "src"],
-  moduleFileExtensions: ["js", "json", "ts", "tsx", "json", "node"],
+  moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json", "node"],
   moduleNameMapper: {
     "\\.module.scss$": "identity-obj-proxy",
     "\\.scss$": "<rootDir>/config/jest/emptyStringMock.js",
