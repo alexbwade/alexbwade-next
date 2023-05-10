@@ -48,7 +48,7 @@ export default function Karelly() {
           <br />
           A man not made for hopes and dreams,
           <br />
-          Not one who "gets the girl."
+          Not one who &quot;gets the girl.&quot;
         </p>
 
         <p>
@@ -67,7 +67,7 @@ export default function Karelly() {
           <br />
           The answer to a thousand prayers,
           <br />
-          When thought I'd ne'er be whole.
+          When thought I&apos;d ne&apos;er be whole.
         </p>
 
         <p>
@@ -107,7 +107,7 @@ export default function Karelly() {
           <br />
           A wisdom that in all my years,
           <br />
-          I've never felt or seen.
+          I&apos;ve never felt or seen.
         </p>
 
         <p>
@@ -135,9 +135,9 @@ export default function Karelly() {
           <br />
           Eclipses all the rest.
           <br />
-          You've made my life worth living now.
+          You&apos;ve made my life worth living now.
           <br />
-          To you, I'll give my best.
+          To you, I&apos;ll give my best.
         </p>
 
         <p>
