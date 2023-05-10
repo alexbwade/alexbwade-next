@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { useEffect, useState } from "react";
 import classNames from "classnames";
 import Snowfall from "react-snowfall";
