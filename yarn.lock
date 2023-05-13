@@ -2230,6 +2230,7 @@ __metadata:
     eslint-config-next: ^13.1.0
     eslint-config-prettier: ^8.5.0
     eslint-import-resolver-alias: ^1.1.2
+    eslint-import-resolver-typescript: ^3.5.5
     eslint-plugin-css-modules: ^2.11.0
     eslint-plugin-import: ^2.26.0
     eslint-plugin-jest: ^27.1.7
@@ -3614,7 +3615,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-import-resolver-typescript@npm:^3.5.2":
+"eslint-import-resolver-typescript@npm:^3.5.2, eslint-import-resolver-typescript@npm:^3.5.5":
   version: 3.5.5
   resolution: "eslint-import-resolver-typescript@npm:3.5.5"
   dependencies:

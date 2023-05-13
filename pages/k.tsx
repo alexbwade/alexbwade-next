@@ -2,7 +2,6 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { Mulish } from "@next/font/google";
 
-// import { Karelly } from "~templates";
 const Karelly = dynamic(() => import("~templates/Karelly"), { ssr: false });
 
 const font = Mulish({ subsets: ["latin"] });
