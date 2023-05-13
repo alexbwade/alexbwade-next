@@ -1,0 +1,134 @@
+.wrapper {
+  background-color: #fff;
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.2)
+    ),
+    url("/images/bg-snow1.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+@media screen and (max-width: 676px) {
+  .wrapper {
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.7)
+      ),
+      url("/images/bg-snow1.jpg");
+  }
+}
+
+.poem {
+  color: #111;
+  font-size: 18px;
+  font-family: Baskerville, "Palatino Linotype", "Times New Roman", Times, serif;
+  text-align: center;
+
+  margin: auto;
+  padding: 20px;
+  text-align: left;
+  max-width: 600px;
+
+  header {
+    margin: 30px 0;
+  }
+
+  div,
+  h1,
+  h2,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1,
+  h2 {
+    font-weight: normal;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 50px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    font-family: "Parisienne", "Palatino Linotype", "Times New Roman", Times, serif;
+
+    .textFire {
+      font-size: 60px;
+      vertical-align: middle;
+      transition: all 0.8s ease-in-out;
+    }
+  }
+
+  h2 {
+    color: #666;
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 30px;
+  }
+
+  p {
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+
+  h2:before {
+    content: "— ";
+  }
+
+  h2:after {
+    content: " —";
+  }
+
+  h2 + p {
+    &:first-letter {
+      float: left;
+      font-size: 38px;
+      line-height: 1;
+      margin: 2px 5px 0 0;
+    }
+  }
+
+  p {
+    &:first-line {
+      font-variant: small-caps;
+      letter-spacing: 1px;
+    }
+    &:last-child {
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+    }
+  }
+}
+
+$start-flames: 0px -2px 4px #fff, 0px -2px 10px #ff3, 0px -10px 20px #f90, 0px -20px 40px #c33, 10px -10px 30px #feec85,
+  -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716,
+  10px -90px 80px #451b0e;
+
+@keyframes flames {
+  0% {
+    text-shadow: $start-flames;
+  }
+  100% {
+    text-shadow: 0px -2px 4px #fff, 0px -2px 10px #ff3, 0px -10px 20px #f90, 0px -20px 40px #c33,
+      10px -10px 30px #fefcc9, -20px -20px 40px #feec85, 22px -42px 60px #ffae34, -22px -58px 50px #ec760c,
+      0 -82px 80px #cd4606, 10px -90px 80px #973716;
+  }
+}
+
+.fire {
+  color: #fff;
+  text-shadow: $start-flames;
+  animation: flames 1s ease-in-out 0.8s infinite alternate;
+}
+
+.burn {
+  color: #fff;
+  text-shadow: $start-flames;
+  animation: flames 0.65s ease-in-out 0.8s infinite alternate;
+}

@@ -49,6 +49,7 @@ module.exports = {
   settings: {
     "import/ignore": [".(scss|css)$"],
     "import/resolver": {
+      typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
       node: {
         extensions: [".js", ".jsx", ".ts", ".tsx"],
         moduleDirectory: ["node_modules", "src"],
