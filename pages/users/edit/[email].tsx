@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Mulish } from "@next/font/google";
+import { Mulish } from "next/font/google";
 
 import { EditUser as EditUserComponent } from "~templates";
 
