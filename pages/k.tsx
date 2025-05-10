@@ -14,10 +14,6 @@ export default function K() {
         <meta name="description" content="Karelly" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/css?family=Parisienne:300,300i,400,400i,700,700i,900,900i"
-          rel="stylesheet"
-        />
       </Head>
       <div className={font.className}>
         <Karelly />
