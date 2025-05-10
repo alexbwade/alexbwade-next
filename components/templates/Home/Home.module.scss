@@ -85,7 +85,7 @@
     height: 100vh;
     font-size: 12px;
     position: absolute;
-    background-image: linear-gradient(to bottom, fade-out(#000, 0.95), fade-out(#000, 0.7), fade-out(#000, 0.6)),
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
       url("../../../public/images/alex-wade-photo.jpg");
   }
 
