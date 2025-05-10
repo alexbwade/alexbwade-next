@@ -1,6 +1,6 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import { Mulish } from "@next/font/google";
+import { Mulish } from "next/font/google";
 
 const Karelly = dynamic(() => import("~templates/Karelly"), { ssr: false });
 

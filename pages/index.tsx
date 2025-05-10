@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Mulish } from "@next/font/google";
+import { Mulish } from "next/font/google";
 
 import { Home as HomeComponent } from "~templates";
 
