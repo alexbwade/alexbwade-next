@@ -9,14 +9,14 @@ const nextConfig = {
     //   exclude: ["error"],
     // },
   },
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.edgeql/,
-      use: "raw-loader",
-    });
+  // webpack: (config) => {
+  //   config.module.rules.push({
+  //     test: /\.edgeql/,
+  //     use: "raw-loader",
+  //   });
 
-    return config;
-  },
+  //   return config;
+  // },
 };
 
 module.exports = nextConfig;
