@@ -1,4 +1,5 @@
 /* istanbul ignore file */
+/* eslint-disable react/no-array-index-key */
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Box, Progress, Button, TextInput, PasswordInput, Group, Text, Center } from "@mantine/core";
