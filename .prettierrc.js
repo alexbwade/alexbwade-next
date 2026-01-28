@@ -1,5 +1,5 @@
 /* istanbul ignore next */
-module.exports = {
+export default {
   bracketSpacing: true,
   printWidth: 120,
   semi: true,
