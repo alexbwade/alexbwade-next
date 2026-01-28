@@ -25,7 +25,7 @@ export default async function fetchJson(url: string, params: RequestInit) {
       return { aborted: true };
     }
 
-    console.error("Failed to fetch: ", err);
+    console.error("Failed to fetch: ", err); // eslint-disable-line no-console
 
     return { error: err };
   }

@@ -1,9 +1,10 @@
 /* istanbul ignore next */
-module.exports = {
+export default {
   bracketSpacing: true,
   printWidth: 120,
   semi: true,
   singleQuote: false,
+  jsxSingleQuote: false,
   tabWidth: 2,
   useTabs: false,
   trailingComma: "es5",

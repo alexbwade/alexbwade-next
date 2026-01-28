@@ -1,8 +1,8 @@
-const nextJest = require("next/jest");
-const createJestConfig = nextJest({ dir: "./" });
+import nextJest from "next/jest";
+import tsConfig from "./tsconfig.json";
+import getAliases from "./config/aliases.js";
 
-const tsConfig = require("./tsconfig.json");
-const getAliases = require("./config/aliases.js");
+const createJestConfig = nextJest({ dir: "./" });
 
 const moduleAliasesMap = getAliases({ config: tsConfig, format: "jest" });
 
@@ -45,4 +45,4 @@ const customConfig = {
   verbose: true,
 };
 
-module.exports = createJestConfig(customConfig);
+export default createJestConfig(customConfig);

@@ -44,7 +44,10 @@ export default function useFetchJson(url: string, options: FetchOptions = {}): U
     const getData = async () => {
       setLoading(true);
 
-      const res: FetchJsonResponse = await fetchJson(url, { ...params, signal: controller.signal });
+      const res: FetchJsonResponse = await fetchJson(url, {
+        ...params,
+        signal: controller.signal,
+      });
       if (res.aborted) {
         return;
       }

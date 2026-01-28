@@ -17,7 +17,7 @@ export default function UsersList(props: UsersListProps): JSX.Element {
   const res = useFetchJson("/api/users", {
     dependencies: [fetchCount],
   });
-  const users = res.data;
+  const users: any = res.data; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   const handleDeleteUser = async (email: string): Promise<void> => {
     if (!window.confirm(`Are you sure you want to delete the following user?\n\n${email}`)) {

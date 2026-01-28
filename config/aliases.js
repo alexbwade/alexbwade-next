@@ -59,4 +59,4 @@ function getAliases({ format, config }) {
   }
 }
 
-module.exports = getAliases;
+export default getAliases;

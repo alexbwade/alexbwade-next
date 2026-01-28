@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import "@testing-library/jest-dom/extend-expect";
 import "regenerator-runtime/runtime";
 
