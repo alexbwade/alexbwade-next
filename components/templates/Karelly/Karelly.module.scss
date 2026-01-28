@@ -1,11 +1,7 @@
 .wrapper {
   background-color: #fff;
-  background-image: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.9),
-      rgba(255, 255, 255, 0.2)
-    ),
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2)),
     url("/images/bg-snow1.jpg");
   background-size: cover;
   background-position: center center;
@@ -13,12 +9,8 @@
 
 @media screen and (max-width: 676px) {
   .wrapper {
-    background-image: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.9),
-        rgba(255, 255, 255, 0.7)
-      ),
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)),
       url("/images/bg-snow1.jpg");
   }
 }
@@ -106,8 +98,16 @@
   }
 }
 
-$start-flames: 0px -2px 4px #fff, 0px -2px 10px #ff3, 0px -10px 20px #f90, 0px -20px 40px #c33, 10px -10px 30px #feec85,
-  -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716,
+$start-flames:
+  0px -2px 4px #fff,
+  0px -2px 10px #ff3,
+  0px -10px 20px #f90,
+  0px -20px 40px #c33,
+  10px -10px 30px #feec85,
+  -20px -20px 40px #ffae34,
+  20px -40px 50px #ec760c,
+  -20px -60px 60px #cd4606,
+  0 -80px 70px #973716,
   10px -90px 80px #451b0e;
 
 @keyframes flames {
@@ -115,9 +115,17 @@ $start-flames: 0px -2px 4px #fff, 0px -2px 10px #ff3, 0px -10px 20px #f90, 0px -
     text-shadow: $start-flames;
   }
   100% {
-    text-shadow: 0px -2px 4px #fff, 0px -2px 10px #ff3, 0px -10px 20px #f90, 0px -20px 40px #c33,
-      10px -10px 30px #fefcc9, -20px -20px 40px #feec85, 22px -42px 60px #ffae34, -22px -58px 50px #ec760c,
-      0 -82px 80px #cd4606, 10px -90px 80px #973716;
+    text-shadow:
+      0px -2px 4px #fff,
+      0px -2px 10px #ff3,
+      0px -10px 20px #f90,
+      0px -20px 40px #c33,
+      10px -10px 30px #fefcc9,
+      -20px -20px 40px #feec85,
+      22px -42px 60px #ffae34,
+      -22px -58px 50px #ec760c,
+      0 -82px 80px #cd4606,
+      10px -90px 80px #973716;
   }
 }
 

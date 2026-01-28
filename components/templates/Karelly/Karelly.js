@@ -16,8 +16,12 @@ export default function Karelly() {
     return () => clearTimeout(timeout);
   }, []);
 
-  const fireMainClasses = classNames(styles.textFire, { [styles.fire]: showFireText });
-  const fireAuxClasses = classNames(styles.textFire, { [styles.burn]: showFireText });
+  const fireMainClasses = classNames(styles.textFire, {
+    [styles.fire]: showFireText,
+  });
+  const fireAuxClasses = classNames(styles.textFire, {
+    [styles.burn]: showFireText,
+  });
 
   return (
     <section className={styles.wrapper}>
