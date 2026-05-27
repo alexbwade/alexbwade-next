@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import Link from "next/link";
 import { Avatar, Badge, Table, Group, Text, ActionIcon, Anchor, ScrollArea } from "@mantine/core";
-import { IconPencil, IconTrash } from "@tabler/icons";
+import { IconPencil, IconTrash } from "@tabler/icons-react";
 
 import { useFetchJson } from "~hooks";
 import { fetchJson } from "~utils";

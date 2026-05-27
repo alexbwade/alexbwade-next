@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Button, Divider } from "@mantine/core";
-import { IconUserPlus, IconArrowsShuffle } from "@tabler/icons";
+import { IconUserPlus, IconArrowsShuffle } from "@tabler/icons-react";
 
 import UsersList from "./UsersList";
 
