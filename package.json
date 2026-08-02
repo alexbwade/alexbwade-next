@@ -67,6 +67,6 @@
   },
   "packageManager": "yarn@4.1.0",
   "resolutions": {
-    "postcss": "^8.5.15"
+    "postcss": "^8.5.25"
   }
 }
