@@ -1,5 +1,5 @@
-import nextJest from "next/jest";
-import tsConfig from "./tsconfig.json";
+import nextJest from "next/jest.js";
+import tsConfig from "./tsconfig.json" with { type: "json" };
 import getAliases from "./config/aliases.js";
 
 const createJestConfig = nextJest({ dir: "./" });
