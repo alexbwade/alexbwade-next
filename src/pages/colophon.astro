@@ -14,9 +14,11 @@ const m = t();
     {m.colophon.sections.map((section) => (
       <section>
         <h2>{section.heading}</h2>
-        {section.paragraphs.map((paragraph) => (
-          <p class:list={{ todo: paragraph.startsWith("TODO") }}>{paragraph}</p>
-        ))}
+        <div class="body">
+          {section.paragraphs.map((paragraph) => (
+            <p class:list={{ todo: paragraph.startsWith("TODO") }}>{paragraph}</p>
+          ))}
+        </div>
       </section>
     ))}
     <p class="back">
@@ -55,16 +57,19 @@ const m = t();
     font-weight: 500;
   }
 
-  section > p {
+  .body {
     flex: 1.6 1 480px;
     max-width: 62ch;
+  }
+
+  .body p {
     margin: 0;
     font-size: 17px;
     line-height: 1.6;
     color: var(--slate);
   }
 
-  section > p + p {
+  .body p + p {
     margin-top: 16px;
   }
 
