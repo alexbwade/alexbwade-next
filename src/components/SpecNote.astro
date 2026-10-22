@@ -1,0 +1,12 @@
+---
+// One "Redline" annotation. Position it with the style prop; it only shows when the spec toggle is on.
+interface Props {
+  style: string;
+}
+
+const { style } = Astro.props;
+---
+
+<div class="spec-note" style={style}>
+  <slot />
+</div>

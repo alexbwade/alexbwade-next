@@ -1,0 +1,8 @@
+{
+  "framework": "astro",
+  "installCommand": "corepack yarn install --immutable",
+  "buildCommand": "corepack yarn build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false
+}

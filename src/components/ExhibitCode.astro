@@ -1,0 +1,43 @@
+---
+import { t } from "../i18n";
+
+const label = t().band.code.buttonLabel;
+---
+
+<div class="code-panel">
+  <pre><span class="tag">&lt;Button</span>
+  <span class="attr">variant</span>=<span class="str">"primary"</span>
+  <span class="attr">size</span>=<span class="str">"md"</span>
+  <span class="attr">loading</span>={"{"}saving{"}"}
+  <span class="attr">onClick</span>={"{"}save{"}"}
+<span class="tag">&gt;</span>
+  {label}
+<span class="tag">&lt;/Button&gt;</span></pre>
+</div>
+
+<style>
+  .code-panel {
+    display: flex;
+    align-items: center;
+    padding: 32px;
+    background: var(--ink);
+    color: var(--code-text);
+  }
+
+  pre {
+    margin: 0;
+    font: 14px/1.7 var(--font-mono);
+  }
+
+  .tag {
+    color: var(--code-tag);
+  }
+
+  .attr {
+    color: var(--code-attr);
+  }
+
+  .str {
+    color: var(--code-string);
+  }
+</style>

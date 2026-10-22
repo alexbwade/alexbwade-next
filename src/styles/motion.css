@@ -1,0 +1,126 @@
+/* Line reveal on load. The padding keeps descenders inside the mask. */
+.line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.line > span {
+  display: block;
+  animation: rise 0.8s var(--ease) both;
+}
+
+.line:nth-child(2) > span {
+  animation-delay: 80ms;
+}
+
+.line:nth-child(3) > span {
+  animation-delay: 160ms;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(125%);
+  }
+}
+
+/*
+ * The rotating word and the exhibit panels share one keyframe and the same per-item delays, which keeps them in sync.
+ * The off-screen offset is 140% because at 105% the descenders of hidden words leaked in as thin lines.
+ */
+.rotator {
+  display: inline-grid;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.rotator > span,
+.exhibit > div {
+  grid-area: 1 / 1;
+  transform: translateY(140%);
+  animation: swap var(--swap-duration) var(--ease) infinite;
+}
+
+.rotator > span {
+  white-space: nowrap;
+}
+
+.rotator > :nth-child(1),
+.exhibit > :nth-child(1) {
+  animation-delay: 900ms;
+}
+
+.rotator > :nth-child(2),
+.exhibit > :nth-child(2) {
+  animation-delay: 3400ms;
+}
+
+.rotator > :nth-child(3),
+.exhibit > :nth-child(3) {
+  animation-delay: 5900ms;
+}
+
+@keyframes swap {
+  0% {
+    transform: translateY(140%);
+  }
+  5%,
+  30% {
+    transform: none;
+  }
+  35%,
+  100% {
+    transform: translateY(-140%);
+  }
+}
+
+.curtain {
+  animation: curtain 0.9s var(--ease) 0.5s both;
+}
+
+@keyframes curtain {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+html[data-motion="paused"] :is(.rotator > span, .exhibit > div),
+html[data-offscreen] :is(.rotator > span, .exhibit > div) {
+  animation-play-state: paused;
+}
+
+.motion-toggle [data-when="paused"],
+html[data-motion="paused"] .motion-toggle [data-when="running"] {
+  display: none;
+}
+
+html[data-motion="paused"] .motion-toggle [data-when="paused"] {
+  display: inline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line > span,
+  .curtain {
+    animation: none;
+  }
+
+  .rotator > span,
+  .exhibit > div {
+    animation: none;
+  }
+
+  .rotator > :first-child,
+  .exhibit > :first-child {
+    transform: none;
+  }
+
+  .motion-toggle {
+    display: none;
+  }
+}

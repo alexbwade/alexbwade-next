@@ -1,0 +1,33 @@
+:root {
+  --paper: #fafbfc;
+  --ink: #17202e;
+  --slate: #3b4657;
+  --muted: #556274;
+  /* 3.6:1 on paper, so headline sizes only. */
+  --lead: #7d8799;
+  --rule: #d7e3ee;
+  --panel: #eef2f6;
+  --border: #c9d3de;
+  --field-border: #9aa6b6;
+  --redline: #c8175d;
+  --white: #ffffff;
+
+  --code-text: #e6ebf2;
+  --code-tag: #8fb4ff;
+  --code-attr: #f2a6c4;
+  --code-string: #b6e3c6;
+
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --text-h1: clamp(40px, 6.6vw, 84px);
+  --text-statement: clamp(30px, 4vw, 52px);
+  --text-h3: clamp(26px, 3vw, 38px);
+  --text-email: clamp(24px, 3vw, 36px);
+
+  --container: 1160px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --radius: 4px;
+
+  --ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --swap-duration: 7.5s;
+}

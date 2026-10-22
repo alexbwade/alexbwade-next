@@ -1,0 +1,77 @@
+---
+import { t } from "../i18n";
+import { publicFileSize } from "../lib/fileSize";
+
+const m = t().glance;
+const resumeMeta = m.resumeMeta.replace("{size}", publicFileSize("alex-wade-resume.pdf"));
+---
+
+<section class="glance container" aria-label={m.label}>
+  <div class="glance-inner">
+    <dl>
+      {m.facts.map(({ term, value }) => (
+        <div>
+          <dt>{term}</dt>
+          <dd>{value}</dd>
+        </div>
+      ))}
+    </dl>
+    <a class="resume" href="/alex-wade-resume.pdf" type="application/pdf">
+      {m.resume} <span>{resumeMeta}</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .glance-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    padding-block: 28px 96px;
+    border-top: 1px solid var(--rule);
+  }
+
+  dl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 56px;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  dt {
+    color: var(--muted);
+  }
+
+  dd {
+    margin: 2px 0 0;
+    font-weight: 500;
+  }
+
+  .resume {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: var(--radius);
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .resume:hover {
+    color: var(--paper);
+    background: var(--redline);
+  }
+
+  .resume span {
+    font-weight: 400;
+    color: var(--border);
+  }
+</style>

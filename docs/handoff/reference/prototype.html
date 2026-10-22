@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Alex Wade: Synced exhibit</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#17202E;text-underline-offset:4px}a:hover{color:#C8175D}
+a:focus-visible,button:focus-visible{outline:2px solid #C8175D;outline-offset:3px}
+.btn{font:500 14px 'Schibsted Grotesk',sans-serif;background:transparent;border-radius:4px;padding:0 14px;min-height:44px;cursor:pointer}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.rl{position:absolute;font:500 12px/1.35 'Schibsted Grotesk',sans-serif;color:#C8175D;white-space:nowrap}
+.ln{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
+.ln>span{display:block;animation-duration:.8s;animation-timing-function:cubic-bezier(.65,0,.35,1);animation-fill-mode:both}
+.k0 .ln>span{animation-name:rise0}.k1 .ln>span{animation-name:rise1}
+@keyframes rise0{from{transform:translateY(125%)}to{transform:none}}
+@keyframes rise1{from{transform:translateY(125%)}to{transform:none}}
+.rot{display:inline-grid;overflow:hidden;vertical-align:bottom;padding-bottom:.14em;margin-bottom:-.14em}
+.rot>span,.ex>div{grid-area:1/1;white-space:nowrap;transform:translateY(140%);animation:swap 7.5s cubic-bezier(.65,0,.35,1) infinite}
+.ex{display:grid;overflow:hidden}
+.ex>div{white-space:normal}
+@keyframes swap{0%{transform:translateY(140%)}5%,30%{transform:none}35%,100%{transform:translateY(-140%)}}
+.curtain{animation:.9s cubic-bezier(.65,0,.35,1) .5s both}
+.k0 .curtain{animation-name:cur0}.k1 .curtain{animation-name:cur1}
+@keyframes cur0{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0)}}
+@keyframes cur1{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0)}}
+.code{font:14px/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.paused .rot>span,.paused .ex>div{animation-play-state:paused}
+@media (prefers-reduced-motion: reduce){.ln>span,.curtain{animation:none!important}.rot>span,.ex>div{animation:none;transform:translateY(140%)}.rot>span:first-child,.ex>div:first-child{transform:none}}
+@media (max-width: 760px){.rl{display:none}}
+</style>
+</helmet>
+<div class="k{{k}} {{pauseCls}}" style="background: #FAFBFC; color: #17202E; font-family: 'Schibsted Grotesk', system-ui, sans-serif; min-height: 100vh; overflow-x: hidden">
+<div style="max-width: 1160px; margin: 0 auto; padding: 0 40px; box-sizing: border-box">
+
+<header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; padding: 24px 0">
+<a href="#top" style="font-weight: 600; font-size: 16px; text-decoration: none; padding: 12px 0">Alex Wade</a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 4px 24px; font-size: 15px">
+<a href="#about" style="text-decoration: none; padding: 12px 0">About</a>
+<a href="#work" style="text-decoration: none; padding: 12px 0">Work</a>
+<a href="#experience" style="text-decoration: none; padding: 12px 0">Experience</a>
+<a href="#contact" style="text-decoration: none; padding: 12px 0">Contact</a>
+</nav>
+<div style="display: flex; gap: 8px">
+<button type="button" class="btn" onClick="{{replay}}" style="color: #17202E; border: 1px solid #C9D3DE">Replay motion</button>
+<button type="button" class="btn" onClick="{{toggle}}" aria-pressed="{{pressed}}" style="color: #C8175D; border: 1px solid #C8175D">{{toggleLabel}}</button>
+</div>
+</header>
+
+<section id="top" style="position: relative; padding: 88px 0 40px">
+<h1 style="margin: 0; font-size: clamp(40px, 6.6vw, 84px); line-height: 0.95; font-weight: 500; letter-spacing: -0.045em">
+<span class="sr">Hi, I’m Alex. I build the design systems, app shells and component APIs the next thousand stand on.</span>
+<span aria-hidden="true">
+<span class="ln"><span style="color: #7D8799">Hi, I’m Alex.</span></span>
+<span class="ln"><span style="animation-delay: 80ms">I build the <span class="rot"><span style="animation-delay: 900ms">design systems</span><span style="animation-delay: 3400ms">app shells</span><span style="animation-delay: 5900ms">component APIs</span></span></span></span>
+<span class="ln"><span style="animation-delay: 160ms">the next thousand stand on.</span></span>
+</span>
+</h1>
+</section>
+
+<section aria-label="Portrait and examples" style="position: relative; display: flex; flex-wrap: wrap; gap: 24px; padding-bottom: 72px">
+<figure style="flex: 0 0 320px; max-width: 100%; margin: 0">
+<img class="curtain" src="/_blob/eef1a9f7bc17b8644cd5fcc60edcf9fd" alt="Alex Wade in a brick courtyard" style="display: block; width: 100%; height: 360px; object-fit: cover; object-position: 50% 28%">
+<figcaption style="margin-top: 8px; font-size: 12px; color: #556274">Photo: <a href="https://www.badtactic.com/" style="color: #556274">Matthew Thogerson</a></figcaption>
+</figure>
+<div class="ex" aria-hidden="true" style="flex: 1 1 420px; min-width: 0; height: 360px; background: #EEF2F6">
+
+<div style="animation-delay: 900ms; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between">
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
+<div style="background: #17202E; color: #FAFBFC; border-radius: 4px; padding: 0 18px; height: 40px; display: flex; align-items: center; font-weight: 600; font-size: 15px">Save changes</div>
+<div style="border: 1px solid #17202E; border-radius: 4px; padding: 0 18px; height: 38px; display: flex; align-items: center; font-weight: 500; font-size: 15px">Preview</div>
+<div style="padding: 0 10px; height: 40px; display: flex; align-items: center; font-weight: 500; font-size: 15px; text-decoration: underline; text-underline-offset: 4px">Cancel</div>
+<div style="margin-left: auto; display: flex; align-items: center; gap: 10px; font-size: 14px">Live sync<div style="width: 40px; height: 24px; border-radius: 12px; background: #17202E; position: relative"><div style="position: absolute; right: 3px; top: 3px; width: 18px; height: 18px; border-radius: 9px; background: #FAFBFC"></div></div></div>
+</div>
+<div style="max-width: 360px">
+<div style="font-size: 13px; color: #3B4657; margin-bottom: 6px">Class name</div>
+<div style="background: #FFFFFF; border: 1px solid #9AA6B6; border-radius: 4px; height: 40px; display: flex; align-items: center; padding: 0 12px; font-size: 15px">Period 3 Biology</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 16px">
+<div style="font-size: 12px; color: #3B4657"><div style="width: 56px; height: 40px; background: #17202E; border-radius: 4px; margin-bottom: 6px"></div>ink</div>
+<div style="font-size: 12px; color: #3B4657"><div style="width: 56px; height: 40px; background: #3B4657; border-radius: 4px; margin-bottom: 6px"></div>slate</div>
+<div style="font-size: 12px; color: #3B4657"><div style="width: 56px; height: 40px; background: #D7E3EE; border-radius: 4px; margin-bottom: 6px"></div>mist</div>
+<div style="font-size: 12px; color: #3B4657"><div style="width: 56px; height: 40px; background: #FAFBFC; border: 1px solid #D7E3EE; border-radius: 4px; margin-bottom: 6px; box-sizing: border-box"></div>paper</div>
+<div style="font-size: 12px; color: #3B4657"><div style="width: 56px; height: 40px; background: #C8175D; border-radius: 4px; margin-bottom: 6px"></div>redline</div>
+</div>
+</div>
+
+<div style="animation-delay: 3400ms; padding: 32px; box-sizing: border-box">
+<div style="height: 100%; background: #FFFFFF; border: 1px solid #C9D3DE; border-radius: 6px; display: flex; overflow: hidden">
+<div style="width: 64px; background: #17202E; display: flex; flex-direction: column; align-items: center; gap: 14px; padding-top: 16px">
+<div style="width: 28px; height: 28px; border-radius: 6px; background: #C8175D"></div>
+<div style="width: 24px; height: 24px; border-radius: 6px; background: #3B4657"></div>
+<div style="width: 24px; height: 24px; border-radius: 6px; background: #3B4657"></div>
+<div style="width: 24px; height: 24px; border-radius: 6px; background: #3B4657"></div>
+<div style="width: 24px; height: 24px; border-radius: 6px; background: #3B4657"></div>
+</div>
+<div style="flex: 1; display: flex; flex-direction: column">
+<div style="height: 52px; border-bottom: 1px solid #D7E3EE; display: flex; align-items: center; justify-content: space-between; padding: 0 16px">
+<div style="width: 240px; height: 28px; border-radius: 14px; background: #EEF2F6"></div>
+<div style="width: 28px; height: 28px; border-radius: 14px; background: #D7E3EE"></div>
+</div>
+<div style="flex: 1; padding: 16px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+<div style="background: #EEF2F6; border-radius: 4px"></div>
+<div style="background: #EEF2F6; border-radius: 4px"></div>
+<div style="background: #EEF2F6; border-radius: 4px"></div>
+<div style="grid-column: span 3; background: #EEF2F6; border-radius: 4px"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="animation-delay: 5900ms; padding: 32px; box-sizing: border-box; background: #17202E; color: #E6EBF2; display: flex; align-items: center">
+<pre class="code" style="margin: 0"><span style="color: #8FB4FF">&lt;Button</span>
+  <span style="color: #F2A6C4">variant</span>=<span style="color: #B6E3C6">"primary"</span>
+  <span style="color: #F2A6C4">size</span>=<span style="color: #B6E3C6">"md"</span>
+  <span style="color: #F2A6C4">loading</span>={saving}
+  <span style="color: #F2A6C4">onClick</span>={save}
+<span style="color: #8FB4FF">&gt;</span>
+  Save changes
+<span style="color: #8FB4FF">&lt;/Button&gt;</span></pre>
+</div>
+
+</div>
+<sc-if value="{{show}}" hint-placeholder-val="{{ true }}">
+<div class="rl" style="left: 0; bottom: 16px">photo 320 × 360 (8:9, native crop), AVIF 640w, credit in figcaption</div>
+<div class="rl" style="left: 344px; bottom: 16px">exhibit: HTML/CSS, 0 image bytes, shares the word’s keyframes and delays</div>
+<div class="rl" style="right: 0; bottom: 56px">WCAG 2.2.2: looping motion needs a pause</div>
+</sc-if>
+<button type="button" class="btn" onClick="{{pause}}" style="position: absolute; right: 0; bottom: 8px; color: #17202E; border: 1px solid #C9D3DE; background: #FAFBFC">{{pauseLabel}}</button>
+</section>
+
+<section aria-label="At a glance" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px; padding: 28px 0 96px; border-top: 1px solid #D7E3EE">
+<dl style="display: flex; flex-wrap: wrap; gap: 20px 56px; margin: 0; font-size: 15px; line-height: 1.5">
+<div><dt style="color: #556274">Experience</dt><dd style="margin: 2px 0 0; font-weight: 500">11 years</dd></div>
+<div><dt style="color: #556274">Based in</dt><dd style="margin: 2px 0 0; font-weight: 500">Portland, Oregon</dd></div>
+<div><dt style="color: #556274">Currently</dt><dd style="margin: 2px 0 0; font-weight: 500">Staff Frontend Engineer, Lightspeed Systems</dd></div>
+</dl>
+<a href="/_blob/0b0c4072caddf047f519e9710e05d34c" type="application/pdf" style="display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 22px; background: #17202E; color: #FAFBFC; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 16px">Read my résumé <span style="font-weight: 400; color: #C9D3DE">PDF, 145 KB</span></a>
+</section>
+
+<section id="about" style="padding: 28px 0 112px; border-top: 1px solid #D7E3EE">
+<h2 style="margin: 0 0 48px; font-size: 15px; font-weight: 500">About</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 32px 80px; align-items: flex-start">
+<div style="flex: 1 1 420px; display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start">
+<img src="/_blob/43dabc895d4ce7fe06d514f0138ed3fa" alt="Alex Wade under string lights" style="display: block; width: 160px; height: 160px; object-fit: cover; object-position: 50% 40%">
+<p style="flex: 1 1 260px; margin: 0; font-size: clamp(30px, 4vw, 52px); line-height: 1.02; font-weight: 500; letter-spacing: -0.04em; max-width: 14ch">I make big frontends feel like one product.</p>
+</div>
+<p style="flex: 1 1 440px; margin: 0; font-size: 18px; line-height: 1.6; color: #3B4657; max-width: 56ch">For more than four years I’ve been the sole maintainer of Lightspeed Systems’ design system, and I built the app shell every one of its products runs inside. Today I lead frontend for the classroom product.</p>
+</div>
+</section>
+
+<section id="work" style="position: relative; padding: 28px 0 96px; border-top: 1px solid #D7E3EE">
+<h2 style="margin: 0 0 32px; font-size: 15px; font-weight: 500">Selected work</h2>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px 80px; padding: 32px 0 40px">
+<h3 style="flex: 1 1 300px; margin: 0; font-size: clamp(26px, 3vw, 38px); line-height: 1.08; font-weight: 500; letter-spacing: -0.035em">Design systems</h3>
+<ul style="flex: 1.6 1 480px; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 28px">
+<li><div style="font-size: 20px; font-weight: 500">Org-wide design system</div><p style="margin: 6px 0 0; font-size: 17px; line-height: 1.6; color: #3B4657; max-width: 58ch">Sole maintainer for four years. 129 components used by 16+ apps and about 57 engineers; I designed and built around 30 of the second-generation components.</p><div style="margin-top: 6px; font-size: 14px; color: #556274">Lightspeed Systems</div></li>
+<li><div style="font-size: 20px; font-weight: 500">Design system team lead</div><p style="margin: 6px 0 0; font-size: 17px; line-height: 1.6; color: #3B4657; max-width: 58ch">Technical lead for the Design System team. Directed the Content Preview re-skin and the cross-team removal of the legacy navigation bar.</p><div style="margin-top: 6px; font-size: 14px; color: #556274">Scribd</div></li>
+<li><div style="font-size: 20px; font-weight: 500">Bringing a design system to Gameday</div><p style="margin: 6px 0 0; font-size: 17px; line-height: 1.6; color: #3B4657; max-width: 58ch">Introduced Nike’s design system to Gameday, Nike’s wholesale e-commerce app.</p><div style="margin-top: 6px; font-size: 14px; color: #556274">Nike</div></li>
+</ul>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px 80px; padding: 40px 0; border-top: 1px solid #D7E3EE">
+<h3 style="flex: 1 1 300px; margin: 0; font-size: clamp(26px, 3vw, 38px); line-height: 1.08; font-weight: 500; letter-spacing: -0.035em">Micro-frontends</h3>
+<ul style="flex: 1.6 1 480px; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 28px">
+<li><div style="font-size: 20px; font-weight: 500">Global app shell</div><p style="margin: 6px 0 0; font-size: 17px; line-height: 1.6; color: #3B4657; max-width: 58ch">One shell for every product, running in staging across 4 apps on 3 stacks: Rails, React, and Go templates. Built for AI-assisted work, with strict CI gates and full test coverage on critical paths.</p><div style="margin-top: 6px; font-size: 14px; color: #556274">Lightspeed Systems</div></li>
+<li><div style="font-size: 20px; font-weight: 500">Global left nav</div><p style="margin: 6px 0 0; font-size: 17px; line-height: 1.6; color: #3B4657; max-width: 58ch">The app shell’s predecessor: a shared navigation API and component, in production across 6 apps. Not quite a micro-frontend, but the same idea.</p><div style="margin-top: 6px; font-size: 14px; color: #556274">Lightspeed Systems</div></li>
+</ul>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px 80px; padding: 40px 0 0; border-top: 1px solid #D7E3EE">
+<h3 style="flex: 1 1 300px; margin: 0; font-size: clamp(26px, 3vw, 38px); line-height: 1.08; font-weight: 500; letter-spacing: -0.035em">Products</h3>
+<ul style="flex: 1.6 1 480px; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 28px">
+<li><div style="font-size: 20px; font-weight: 500">Filter Policies 2.0</div><p style="margin: 6px 0 0; font-size: 17px; line-height: 1.6; color: #3B4657; max-width: 58ch">A ground-up rewrite of a flagship product; I wrote about 95% of it. At its core is a nested policy tree that resolves quickly in both the UI and the Go API. Its Table, Nested List, and Filters Bar components went on to be used by other teams.</p><div style="margin-top: 6px; font-size: 14px; color: #556274">Lightspeed Systems</div></li>
+<li><div style="font-size: 20px; font-weight: 500">Classroom re-architecture</div><p style="margin: 6px 0 0; font-size: 17px; line-height: 1.6; color: #3B4657; max-width: 58ch">[One or two sentences on what you’re changing and why.]</p><div style="margin-top: 6px; font-size: 14px; color: #556274">Lightspeed Systems, in progress</div></li>
+</ul>
+</div>
+</section>
+
+<section id="experience" style="position: relative; padding: 28px 0 96px; border-top: 1px solid #D7E3EE">
+<h2 style="margin: 0 0 32px; font-size: 15px; font-weight: 500">Experience</h2>
+<sc-if value="{{show}}" hint-placeholder-val="{{ true }}">
+<div class="rl" style="right: 0; top: 30px">semantic: ol, time datetime</div>
+</sc-if>
+<ol style="list-style: none; margin: 0 0 0 auto; padding: 0; max-width: 760px">
+<li style="padding: 0 0 24px">
+<div style="font-size: 22px">Lightspeed Systems</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 24px; margin-top: 4px; font-size: 15px; color: #556274"><span>Staff Frontend Engineer</span><span><time datetime="2023-08">Aug 2023</time> – present</span></div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 24px; margin-top: 2px; font-size: 15px; color: #556274"><span>Senior Software Engineer</span><span><time datetime="2022-04">Apr 2022</time> – <time datetime="2023-08">Aug 2023</time></span></div>
+</li>
+<li style="padding: 24px 0; border-top: 1px solid #D7E3EE">
+<div style="font-size: 22px">Scribd</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 24px; margin-top: 4px; font-size: 15px; color: #556274"><span>Senior Software Engineer</span><span><time datetime="2021-03">Mar 2021</time> – <time datetime="2022-04">Apr 2022</time></span></div>
+</li>
+<li style="padding: 24px 0; border-top: 1px solid #D7E3EE">
+<div style="font-size: 22px">Nike</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 24px; margin-top: 4px; font-size: 15px; color: #556274"><span>Senior Software Engineer (contract)</span><span><time datetime="2020-03">Mar 2020</time> – <time datetime="2021-03">Mar 2021</time></span></div>
+</li>
+<li style="padding: 24px 0 0; border-top: 1px solid #D7E3EE">
+<div style="font-size: 22px">FitEra / Vestright</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 24px; margin-top: 4px; font-size: 15px; color: #556274"><span>Senior Web Developer</span><span><time datetime="2015-09">Sept 2015</time> – <time datetime="2020-03">Mar 2020</time></span></div>
+</li>
+</ol>
+</section>
+
+<footer id="contact" style="position: relative; padding: 28px 0 56px; border-top: 1px solid #D7E3EE">
+<h2 style="margin: 0 0 40px; font-size: 15px; font-weight: 500">Contact</h2>
+<a href="mailto:alexbwade@gmail.com" style="display: inline-block; font-size: clamp(24px, 3vw, 36px); line-height: 1.2; font-weight: 500; letter-spacing: -0.03em; text-decoration-thickness: 1px; padding: 4px 0">alexbwade@gmail.com</a>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; margin-top: 56px; font-size: 15px; color: #556274">
+<span>Portland, Oregon</span>
+<a href="#" style="padding: 12px 0">How this site is built</a>
+</div>
+<sc-if value="{{show}}" hint-placeholder-val="{{ true }}">
+<div class="rl" style="left: 0; bottom: 20px">0 KB client JS, html lang set, visible focus everywhere</div>
+</sc-if>
+</footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":3400}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { show: true, k: 0, paused: false }; }
+  renderVals() {
+    const s = this.state;
+    return {
+      show: s.show, k: s.k,
+      pauseCls: s.paused ? 'paused' : '',
+      pauseLabel: s.paused ? 'Play animation' : 'Pause animation',
+      pause: () => this.setState({ paused: !s.paused }),
+      pressed: s.show ? 'true' : 'false',
+      toggleLabel: s.show ? 'Hide the spec' : 'Show the spec',
+      toggle: () => this.setState({ show: !s.show }),
+      replay: () => this.setState({ k: s.k ? 0 : 1 })
+    };
+  }
+}
+</script>
+</body>
+</html>

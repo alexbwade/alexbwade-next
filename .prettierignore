@@ -1,0 +1,6 @@
+dist
+.astro
+.yarn
+archive
+docs
+yarn.lock

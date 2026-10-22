@@ -6,12 +6,12 @@
 .pnp.js
 
 # testing
-/coverage
-.jest-cache
+/test-results/
+/playwright-report/
 
-# next.js
-/.next/
-/out/
+# astro
+/dist/
+/.astro/
 
 # production
 /build
@@ -39,7 +39,6 @@ bash.exe.stackdump
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 
 todo.md
 
