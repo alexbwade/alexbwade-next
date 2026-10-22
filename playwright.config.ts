@@ -8,11 +8,11 @@ export default defineConfig({
   reporter: process.env["CI"] ? "github" : "list",
   use: { baseURL: baseURL ?? "http://127.0.0.1:4321" },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
-  webServer: baseURL
-    ? undefined
-    : {
-        command: "yarn build && yarn preview --port 4321 --host 127.0.0.1",
-        url: "http://127.0.0.1:4321",
-        reuseExistingServer: !process.env["CI"],
-      },
+  ...(!baseURL && {
+    webServer: {
+      command: "yarn build && yarn preview --port 4321 --host 127.0.0.1",
+      url: "http://127.0.0.1:4321",
+      reuseExistingServer: !process.env["CI"],
+    },
+  }),
 });
