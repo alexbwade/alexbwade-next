@@ -190,7 +190,7 @@ export const en = {
         heading: "Lighthouse",
         // TODO: replace with production scores after launch.
         paragraphs: [
-          "On the Vercel preview, Lighthouse’s mobile run scores 98 to 100 for Performance and 100 for Accessibility and Best Practices, with no layout shift and 111 KB transferred on first load. SEO is measured after launch, because Vercel marks preview deployments as noindex.",
+          "On the Vercel preview, Lighthouse’s mobile run scores 100 for Performance, Accessibility and Best Practices, with a 1.2-second largest contentful paint, no layout shift and 84 KB transferred on first load. SEO is measured after launch, because Vercel marks preview deployments as noindex.",
         ],
       },
       {

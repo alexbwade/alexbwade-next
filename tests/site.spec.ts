@@ -44,7 +44,8 @@ test.describe("health", () => {
     test(`${path} loads with no console errors or CSP violations`, async ({ page }) => {
       const errors: string[] = [];
       page.on("console", (message) => {
-        if (message.type() === "error") errors.push(message.text());
+        // Vercel injects its toolbar from vercel.live on preview deployments only, and the CSP blocks it.
+        if (message.type() === "error" && !message.text().includes("vercel.live")) errors.push(message.text());
       });
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto(path, { waitUntil: "networkidle" });
