@@ -27,7 +27,11 @@ const m = t().about;
         />
         <p class="statement">{m.statement}</p>
       </div>
-      <p class="body">{m.body}</p>
+      <div class="body">
+        {m.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
     </div>
   </div>
 </section>
@@ -76,9 +80,16 @@ const m = t().about;
   .body {
     flex: 1 1 440px;
     max-width: 56ch;
-    margin: 0;
     font-size: 18px;
     line-height: 1.6;
     color: var(--slate);
+  }
+
+  .body p {
+    margin: 0;
+  }
+
+  .body p + p {
+    margin-top: 1em;
   }
 </style>

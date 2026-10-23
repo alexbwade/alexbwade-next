@@ -74,8 +74,11 @@ export const en = {
   about: {
     label: "About",
     photoAlt: "Alex Wade under string lights",
-    statement: "I make big frontends feel like one product.",
-    body: "For more than four years I’ve been the sole maintainer of Lightspeed Systems’ design system, and I built the app shell every one of its products runs inside. Today I lead frontend for the classroom product.",
+    statement: "Building seamless user experiences is my craft.",
+    paragraphs: [
+      "Throughout my whole career, I’ve put UX at the center of what I do. Users deserve intuitive, responsive, performant UIs that allow them to accomplish their goals effortlessly. It should always “just work.”",
+      "Today, I am proud to be the sole maintainer and core contributor to the Lightspeed Systems design system, the org-wide shared navigation architect, and technical lead for the Classroom product.",
+    ],
   },
 
   work: {
