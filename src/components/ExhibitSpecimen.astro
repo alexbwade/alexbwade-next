@@ -1,0 +1,164 @@
+---
+import { t } from "../i18n";
+
+const m = t().band.specimen;
+---
+
+<div class="specimen">
+  <div class="controls">
+    <div class="primary">{m.primary}</div>
+    <div class="secondary">{m.secondary}</div>
+    <div class="tertiary">{m.tertiary}</div>
+    <div class="toggle">
+      {m.toggle}
+      <div class="switch">
+        <div class="knob"></div>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <div class="field-label">{m.fieldLabel}</div>
+    <div class="field-input">{m.fieldValue}</div>
+  </div>
+  <div class="swatches">
+    {m.swatches.map((name) => (
+      <div class="swatch">
+        <div class="chip" />
+        {name}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .specimen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px;
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .primary,
+  .secondary,
+  .tertiary {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 18px;
+    border-radius: var(--radius);
+  }
+
+  .primary {
+    background: var(--ink);
+    color: var(--paper);
+    font-weight: 600;
+  }
+
+  .secondary {
+    height: 38px;
+    border: 1px solid var(--ink);
+  }
+
+  .tertiary {
+    padding: 0 10px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .switch {
+    position: relative;
+    width: 40px;
+    height: 24px;
+    border-radius: 12px;
+    background: var(--ink);
+  }
+
+  .knob {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    background: var(--paper);
+  }
+
+  .field {
+    max-width: 360px;
+  }
+
+  .field-label {
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: var(--slate);
+  }
+
+  .field-input {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--field-border);
+    border-radius: var(--radius);
+    background: var(--white);
+    font-size: 15px;
+  }
+
+  .swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .swatch {
+    font-size: 12px;
+    color: var(--slate);
+  }
+
+  .chip {
+    width: 56px;
+    height: 40px;
+    margin-bottom: 6px;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+  }
+
+  .swatch:nth-child(1) .chip {
+    background: var(--ink);
+  }
+
+  .swatch:nth-child(2) .chip {
+    background: var(--slate);
+  }
+
+  .swatch:nth-child(3) .chip {
+    background: var(--rule);
+  }
+
+  .swatch:nth-child(4) .chip {
+    border-color: var(--rule);
+    background: var(--paper);
+  }
+
+  .swatch:nth-child(5) .chip {
+    background: var(--redline);
+  }
+</style>

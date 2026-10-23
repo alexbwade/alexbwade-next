@@ -1,0 +1,67 @@
+---
+import { formatMonth, t } from "../i18n";
+
+const m = t();
+---
+
+<section id="experience" class="container" aria-labelledby="experience-label">
+  <div class="section">
+    <h2 id="experience-label" class="section-label">
+      {m.experience.label}
+    </h2>
+    <ol>
+      {m.experience.jobs.map((job) => (
+        <li>
+          <div class="company">{job.company}</div>
+          {job.roles.map((role) => (
+            <div class="role">
+              <span>{role.title}</span>
+              <span>
+                <time datetime={role.start}>{formatMonth(role.start)}</time> –{" "}
+                {role.end ? <time datetime={role.end}>{formatMonth(role.end)}</time> : m.experience.present}
+              </span>
+            </div>
+          ))}
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  ol {
+    max-width: 760px;
+    margin: 0 0 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    padding-block: 24px;
+    border-top: 1px solid var(--rule);
+  }
+
+  li:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  li:last-child {
+    padding-bottom: 0;
+  }
+
+  .company {
+    margin-bottom: 2px;
+    font-size: 22px;
+  }
+
+  .role {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2px 24px;
+    margin-top: 2px;
+    font-size: 15px;
+    color: var(--muted);
+  }
+</style>

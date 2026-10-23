@@ -1,0 +1,96 @@
+---
+import { Picture } from "astro:assets";
+import { t } from "../i18n";
+import stringLights from "../assets/alex-string-lights.jpg";
+
+const m = t().about;
+---
+
+<section id="about" class="container" aria-labelledby="about-label">
+  <div class="section about">
+    <h2 id="about-label" class="section-label">
+      {m.label}
+    </h2>
+    <div class="row">
+      <div class="lede">
+        <Picture
+          src={stringLights}
+          formats={["avif", "webp"]}
+          widths={[160, 320]}
+          sizes="160px"
+          width={160}
+          height={160}
+          alt={m.photoAlt}
+          loading="lazy"
+          decoding="async"
+          class="portrait"
+        />
+        <p class="statement">{m.statement}</p>
+      </div>
+      <div class="body">
+        {m.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding-bottom: 112px;
+  }
+
+  .section-label {
+    margin-bottom: 48px;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px 80px;
+    align-items: flex-start;
+  }
+
+  .lede {
+    display: flex;
+    flex: 1 1 420px;
+    flex-wrap: wrap;
+    gap: 28px;
+    align-items: flex-start;
+  }
+
+  .lede :global(.portrait) {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    object-position: 50% 40%;
+  }
+
+  .statement {
+    flex: 1 1 260px;
+    text-wrap: balance;
+    max-width: 14ch;
+    margin: 0;
+    font-size: var(--text-statement);
+    line-height: 1.02;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+  }
+
+  .body {
+    flex: 1 1 440px;
+    max-width: 56ch;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--slate);
+  }
+
+  .body p {
+    margin: 0;
+  }
+
+  .body p + p {
+    margin-top: 1em;
+  }
+</style>
