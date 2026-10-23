@@ -19,7 +19,8 @@
 
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  --text-h1: clamp(40px, 6.6vw, 84px);
+  /* Capped at 80px so "I build quality component APIs" fits the 1080px content width on one line. */
+  --text-h1: clamp(40px, 6.6vw, 80px);
   --text-statement: clamp(30px, 4vw, 52px);
   --text-h3: clamp(26px, 3vw, 38px);
   --text-email: clamp(24px, 3vw, 36px);

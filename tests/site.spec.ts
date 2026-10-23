@@ -48,6 +48,25 @@ test.describe("layout", () => {
   }
 });
 
+test.describe("headline", () => {
+  // The rotator is as wide as its widest phrase, so this covers all three.
+  for (const width of [640, 768, 1024, 1280, 1920]) {
+    test(`"I build quality <phrase>" stays on one line at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto("/");
+      await page.evaluate(() => document.fonts.ready);
+      const { lineHeight, fontSize } = await page
+        .locator(".line")
+        .nth(1)
+        .evaluate((line) => ({
+          lineHeight: line.getBoundingClientRect().height,
+          fontSize: parseFloat(getComputedStyle(line).fontSize),
+        }));
+      expect(lineHeight).toBeLessThan(fontSize * 1.5);
+    });
+  }
+});
+
 test.describe("motion", () => {
   test("the pause button pauses the loop and remembers the choice", async ({ page }) => {
     await page.goto("/");

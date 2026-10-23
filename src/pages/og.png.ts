@@ -30,12 +30,16 @@ export const GET: APIRoute = async () => {
         {
           display: "flex",
           flexDirection: "column",
-          fontSize: 84,
+          fontSize: 80,
           fontWeight: 500,
           lineHeight: 0.98,
           letterSpacing: "-0.045em",
         },
-        [line(m.lead, colors.lead), line(m.before), line(m.rotating[0] ?? "", colors.redline), line(m.after)]
+        [
+          line(m.lead, colors.lead),
+          el("div", { display: "flex", gap: "0.25em" }, [m.before, line(m.rotating[0] ?? "", colors.redline)]),
+          line(m.after),
+        ]
       ),
     ]
   );
