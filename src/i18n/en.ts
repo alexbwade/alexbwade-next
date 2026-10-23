@@ -123,13 +123,13 @@ export const en = {
         title: "Products",
         items: [
           {
-            title: "Filter Policies 2.0",
-            body: "A ground-up rewrite of a flagship product; I wrote about 95% of it. At its core is a nested policy tree that resolves quickly in both the UI and the Go API. Its Table, Nested List, and Filters Bar components went on to be used by other teams.",
+            title: "Filter",
+            body: "As the Filter lead for over 3 years, my contributions included a ground-up rewrite of this flagship product’s core feature-set; I architected and wrote about 95% of it. My favorite challenge was the policy assignment and resolution across a customer’s group tree, where performance and intuitive UX were absolutely critical. Its Table, Nested List, and Filters Bar components went on to be used by other teams.",
             meta: "Lightspeed Systems",
           },
           {
-            title: "Classroom re-architecture",
-            body: "I cut seconds off the initial load for the company’s highest-retention product, the Classroom teacher dashboard.",
+            title: "Classroom",
+            body: "Currently the lead for Classroom projects, I’ve had the opportunity to take the company’s highest-retention product and bring it up to modern standards: re-architecting the admin experience in a new SPA with enqueued save and performance improvements across all interactions, and cutting seconds off the initial load for the teacher experience.",
             meta: "Lightspeed Systems, in progress",
           },
         ],
