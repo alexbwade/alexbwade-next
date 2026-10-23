@@ -14,7 +14,7 @@ interface Props {
 
 const { title, description, locale = defaultLocale } = Astro.props;
 const m = t(locale);
-const site = Astro.site ?? new URL("https://alexbwade.com");
+const site = Astro.site ?? new URL("https://www.alexbwade.com");
 // Static output is built as /index.html and /colophon.html, but Vercel serves them without the extension.
 const canonical = new URL(Astro.url.pathname.replace(/(index)?\.html$/, ""), site).href;
 const { code: controlsScript } = await transform(controlsSource, { minify: true, target: "es2022" });

@@ -187,9 +187,9 @@ export const en = {
       },
       {
         heading: "Lighthouse",
-        // TODO: replace with production scores after launch.
+        // Measured on production at launch, October 2026.
         paragraphs: [
-          "On the Vercel preview, Lighthouse’s mobile run scores 100 for Performance, Accessibility and Best Practices, with a 1.2-second largest contentful paint, no layout shift and 84 KB transferred on first load. SEO is measured after launch, because Vercel marks preview deployments as noindex.",
+          "Lighthouse’s mobile run scores 100 for Accessibility, Best Practices and SEO, and 97 to 99 for Performance. The largest contentful paint lands in 1.3 to 1.5 seconds, nothing shifts as the page loads, and the first visit transfers 84 KB.",
         ],
       },
       {
