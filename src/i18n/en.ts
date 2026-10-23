@@ -88,19 +88,18 @@ export const en = {
         title: "Design systems",
         items: [
           {
-            title: "Org-wide design system",
-            body: "Sole maintainer for four years. 129 components used by 16+ apps and about 57 engineers; I designed and built around 30 of the second-generation components.",
+            title: "Sole maintainer and core contributor",
+            body: "129 components used by 16+ apps and about 57 engineers; I designed and built around 30 of the second-generation components.",
             meta: "Lightspeed Systems",
           },
           {
-            title: "Design system team lead",
+            title: "Team lead",
             body: "Technical lead for the Design System team. Directed the Content Preview re-skin and the cross-team removal of the legacy navigation bar.",
             meta: "Scribd",
           },
           {
-            // TODO(alex): confirm this item.
-            title: "Bringing a design system to Gameday",
-            body: "Introduced Nike’s design system to Gameday, Nike’s wholesale e-commerce app.",
+            title: "Promoter",
+            body: "As the project lead for a product catalog feature, I introduced Nike’s design system to Gameday, Nike’s wholesale e-commerce app.",
             meta: "Nike",
           },
         ],
