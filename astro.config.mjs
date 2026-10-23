@@ -2,7 +2,8 @@ import { defineConfig, fontProviders } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://alexbwade.com",
+  // Vercel serves www as the primary domain and redirects the bare domain to it.
+  site: "https://www.alexbwade.com",
   output: "static",
   trailingSlash: "never",
   build: {
