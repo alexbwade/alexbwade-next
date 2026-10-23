@@ -109,12 +109,12 @@ export const en = {
         items: [
           {
             title: "Global app shell",
-            body: "One shell for every product, running in staging across 4 apps on 3 stacks: Rails, React, and Go templates. Built for AI-assisted work, with strict CI gates and full test coverage on critical paths.",
+            body: "One shell for every product: a fast independent deployable that “just works” on every app, from React SPAs to Django MPAs. Built for AI-assisted work, with strict CI gates, excellent documentation, and full test coverage on critical paths.",
             meta: "Lightspeed Systems",
           },
           {
             title: "Global left nav",
-            body: "The app shell’s predecessor: a shared navigation API and component, in production across 6 apps. Not quite a micro-frontend, but the same idea.",
+            body: "The app shell’s predecessor: a shared navigation API and component, in production across 6 apps. While not a “true” micro-frontend, it accomplished the same goal for Lightspeed’s React-based product apps, allowing most navigation changes to be configurable and deployable in one place. This also “made the case” for the app shell, proving a micro-frontend’s value in further unifying Lightspeed’s broader suite of applications.",
             meta: "Lightspeed Systems",
           },
         ],
