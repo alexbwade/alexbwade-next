@@ -5,7 +5,7 @@ export const en = {
     title: "Alex Wade, Staff Frontend Engineer",
     // TODO(alex): review this description.
     description:
-      "I’m Alex Wade, a staff frontend engineer in Portland, Oregon. I build the design systems, app shells and component APIs that big frontends are built on.",
+      "I’m Alex Wade, a staff frontend engineer in Portland, Oregon. I build quality design systems, app shells and component APIs you can always rely on.",
     ogImageAlt: "Hi, I’m Alex. I build quality design systems you can always rely on.",
   },
 
@@ -23,7 +23,6 @@ export const en = {
   },
 
   hero: {
-    // TODO(alex): the tagline is working copy.
     srHeadline: "Hi, I’m Alex. I build quality design systems, app shells and component APIs you can always rely on.",
     lead: "Hi, I’m Alex.",
     before: "I build quality",
@@ -46,13 +45,8 @@ export const en = {
       toggle: "Live sync",
       fieldLabel: "Class name",
       fieldValue: "Period 3 Biology",
-      swatches: [
-        { name: "ink", color: "var(--ink)" },
-        { name: "slate", color: "var(--slate)" },
-        { name: "mist", color: "var(--rule)" },
-        { name: "paper", color: "var(--paper)" },
-        { name: "redline", color: "var(--redline)" },
-      ],
+      // Labels for the five swatches; their colours are set in ExhibitSpecimen.astro.
+      swatches: ["ink", "slate", "mist", "paper", "redline"],
     },
     code: { buttonLabel: "Save changes" },
   },
@@ -161,6 +155,13 @@ export const en = {
     colophonLink: "How this site is built",
   },
 
+  notFound: {
+    title: "Page not found",
+    heading: "This page doesn’t exist.",
+    body: "The link may be old, or the address may have a typo.",
+    home: "Go to the home page",
+  },
+
   colophon: {
     title: "How this site is built",
     description: "The stack, performance budget, accessibility approach and browser support for alexbwade.com.",
@@ -182,7 +183,7 @@ export const en = {
       {
         heading: "Accessibility",
         paragraphs: [
-          "Every text colour meets WCAG AA, and focus is visible everywhere. The rotating headline has a pause button, and it stops entirely if your system asks for reduced motion. Screen readers get the headline as one sentence. The page is checked with axe and by hand with a keyboard and a screen reader.",
+          "Every text colour meets WCAG AA, and focus is visible everywhere. The rotating headline has a pause button, and it stops entirely if your system asks for reduced motion. Screen readers get the headline as one sentence. The page is checked with axe and by hand with a keyboard.",
         ],
       },
       {

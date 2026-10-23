@@ -36,6 +36,10 @@ a:hover {
   outline-offset: 3px;
 }
 
+p {
+  text-wrap: pretty;
+}
+
 .container {
   max-width: var(--container);
   margin-inline: auto;

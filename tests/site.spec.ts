@@ -11,11 +11,14 @@ async function expectNoAxeViolations(page: Page) {
 }
 
 test.describe("accessibility", () => {
-  for (const path of ["/", "/colophon"]) {
-    test(`axe finds no violations on ${path}`, async ({ page }) => {
-      await page.goto(path);
-      await expectNoAxeViolations(page);
-    });
+  for (const path of ["/", "/colophon", "/no-such-page"]) {
+    for (const width of [375, 1280]) {
+      test(`axe finds no violations on ${path} at ${width}px`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(path);
+        await expectNoAxeViolations(page);
+      });
+    }
   }
 
   test("the page has one h1, the landmarks and a working skip link", async ({ page }) => {
@@ -33,6 +36,38 @@ test.describe("accessibility", () => {
     const skip = page.getByRole("link", { name: "Skip to content" });
     await expect(skip).toBeFocused();
     await expect(skip).toBeInViewport();
+  });
+});
+
+test.describe("health", () => {
+  for (const path of ["/", "/colophon"]) {
+    test(`${path} loads with no console errors or CSP violations`, async ({ page }) => {
+      const errors: string[] = [];
+      page.on("console", (message) => {
+        if (message.type() === "error") errors.push(message.text());
+      });
+      page.on("pageerror", (error) => errors.push(error.message));
+      await page.goto(path, { waitUntil: "networkidle" });
+      // Exercise the inline script too, where there is something for it to do.
+      const pause = page.getByRole("button", { name: "Pause animation" });
+      if (await pause.count()) await pause.click();
+      expect(errors).toEqual([]);
+    });
+  }
+
+  test("the self-hosted font loads", async ({ page }) => {
+    await page.goto("/");
+    const loaded = await page.evaluate(async () => {
+      await document.fonts.ready;
+      return [...document.fonts].some((font) => font.family.includes("Schibsted Grotesk") && font.status === "loaded");
+    });
+    expect(loaded).toBe(true);
+  });
+
+  test("unknown paths get the custom 404 page", async ({ page }) => {
+    const response = await page.goto("/no-such-page");
+    expect(response?.status()).toBe(404);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("This page doesn’t exist.");
   });
 });
 

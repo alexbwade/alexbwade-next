@@ -21,9 +21,9 @@ const m = t().band.specimen;
     <div class="field-input">{m.fieldValue}</div>
   </div>
   <div class="swatches">
-    {m.swatches.map(({ name, color }) => (
+    {m.swatches.map((name) => (
       <div class="swatch">
-        <div class="chip" style={`background: ${color}`} />
+        <div class="chip" />
         {name}
       </div>
     ))}
@@ -141,7 +141,24 @@ const m = t().band.specimen;
     border-radius: var(--radius);
   }
 
+  .swatch:nth-child(1) .chip {
+    background: var(--ink);
+  }
+
+  .swatch:nth-child(2) .chip {
+    background: var(--slate);
+  }
+
+  .swatch:nth-child(3) .chip {
+    background: var(--rule);
+  }
+
   .swatch:nth-child(4) .chip {
     border-color: var(--rule);
+    background: var(--paper);
+  }
+
+  .swatch:nth-child(5) .chip {
+    background: var(--redline);
   }
 </style>

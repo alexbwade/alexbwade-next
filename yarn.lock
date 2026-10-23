@@ -914,6 +914,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource-variable/schibsted-grotesk@npm:5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource-variable/schibsted-grotesk@npm:5.3.0"
+  checksum: 10/9ae232db012d0ae6e9357cc444db9cf4d1239e1e0079f1b559e49a41de4d4a9f78e99c7a4eb742add1e29f3d47f06c85645786c6277a0053e993ce34e81a0cac
+  languageName: node
+  linkType: hard
+
 "@fontsource/schibsted-grotesk@npm:^5.3.0":
   version: 5.3.0
   resolution: "@fontsource/schibsted-grotesk@npm:5.3.0"
@@ -2067,6 +2074,7 @@ __metadata:
     "@emnapi/core": "npm:^1.11.3"
     "@emnapi/runtime": "npm:^1.11.3"
     "@eslint/js": "npm:^10.0.1"
+    "@fontsource-variable/schibsted-grotesk": "npm:5.3.0"
     "@fontsource/schibsted-grotesk": "npm:^5.3.0"
     "@playwright/test": "npm:^1.64.1"
     "@resvg/resvg-js": "npm:^2.6.2"

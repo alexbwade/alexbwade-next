@@ -25,6 +25,9 @@ const person = {
   "@type": "Person",
   name: "Alex Wade",
   jobTitle: "Staff Frontend Engineer",
+  worksFor: { "@type": "Organization", name: "Lightspeed Systems" },
+  address: { "@type": "PostalAddress", addressLocality: "Portland", addressRegion: "OR", addressCountry: "US" },
+  image: ogImage,
   url: site.href,
   sameAs: ["https://www.linkedin.com/in/alexbwade"],
 };
@@ -43,6 +46,7 @@ const person = {
     <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#FAFBFC" />
+    <meta name="color-scheme" content="light" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Alex Wade" />
