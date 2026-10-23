@@ -129,7 +129,7 @@ export const en = {
           },
           {
             title: "Classroom",
-            body: "Currently the lead for Classroom projects, I’ve had the opportunity to take the company’s highest-retention product and bring it up to modern standards: re-architecting the admin experience in a new SPA with enqueued save and performance improvements across all interactions, and cutting seconds off the initial load for the teacher experience.",
+            body: "I lead Classroom projects, and I’m bringing the company’s highest-retention product up to modern standards. I re-architected the admin experience as a new SPA, with background saves and faster interactions throughout, and I cut seconds off the initial load of the teacher experience.",
             meta: "Lightspeed Systems, in progress",
           },
         ],
