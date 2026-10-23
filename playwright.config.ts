@@ -10,7 +10,8 @@ export default defineConfig({
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   ...(!baseURL && {
     webServer: {
-      command: "yarn build && yarn preview --port 4321 --host 127.0.0.1",
+      // --ignore-lock keeps the server in the foreground; Astro backgrounds it when it detects a coding agent.
+      command: "yarn build && yarn preview --port 4321 --host 127.0.0.1 --ignore-lock",
       url: "http://127.0.0.1:4321",
       reuseExistingServer: !process.env["CI"],
     },

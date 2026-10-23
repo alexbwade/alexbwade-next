@@ -1,6 +1,5 @@
 ---
 import { t } from "../i18n";
-import SpecNote from "./SpecNote.astro";
 
 const m = t();
 ---
@@ -17,13 +16,11 @@ const m = t();
       <span>{m.contact.location}</span>
       <a href="/colophon">{m.contact.colophonLink}</a>
     </div>
-    <SpecNote style="left: 0; bottom: 20px">{m.spec.footer}</SpecNote>
   </div>
 </footer>
 
 <style>
   .footer {
-    position: relative;
     padding-block: 28px 56px;
     border-top: 1px solid var(--rule);
   }

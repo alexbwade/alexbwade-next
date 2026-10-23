@@ -6,7 +6,7 @@ export const en = {
     // TODO(alex): review this description.
     description:
       "I’m Alex Wade, a staff frontend engineer in Portland, Oregon. I build the design systems, app shells and component APIs that big frontends are built on.",
-    ogImageAlt: "Hi, I’m Alex. I build the design systems the next thousand stand on.",
+    ogImageAlt: "Hi, I’m Alex. I build quality design systems you can always rely on.",
   },
 
   header: {
@@ -19,17 +19,16 @@ export const en = {
       { href: "#experience", label: "Experience" },
       { href: "#contact", label: "Contact" },
     ],
-    specShow: "Show the spec",
-    specHide: "Hide the spec",
+    resume: "Résumé",
   },
 
   hero: {
     // TODO(alex): the tagline is working copy.
-    srHeadline: "Hi, I’m Alex. I build the design systems, app shells and component APIs the next thousand stand on.",
+    srHeadline: "Hi, I’m Alex. I build quality design systems, app shells and component APIs you can always rely on.",
     lead: "Hi, I’m Alex.",
-    before: "I build the",
+    before: "I build quality",
     rotating: ["design systems", "app shells", "component APIs"],
-    after: "the next thousand stand on.",
+    after: "you can always rely on.",
   },
 
   band: {
@@ -66,6 +65,8 @@ export const en = {
       { term: "Currently", value: "Staff Frontend Engineer, Lightspeed Systems" },
     ],
     resume: "Read my résumé",
+    // Screen-reader-only suffix for links that open in a new tab.
+    newTab: "(opens in a new tab)",
     // {size} is filled in from the file at build time.
     resumeMeta: "PDF, {size}",
   },
@@ -126,8 +127,7 @@ export const en = {
           },
           {
             title: "Classroom re-architecture",
-            // TODO(alex): placeholder copy, shown on the page on purpose.
-            body: "TODO: One or two sentences on what you’re changing and why.",
+            body: "I cut seconds off the initial load for the company’s highest-retention product, the Classroom teacher dashboard.",
             meta: "Lightspeed Systems, in progress",
           },
         ],
@@ -159,15 +159,6 @@ export const en = {
     colophonLink: "How this site is built",
   },
 
-  // The "Redline" annotations, shown only when the spec toggle is on.
-  spec: {
-    photo: "photo 320 × 360 (8:9, native crop), AVIF 640w, credit in figcaption",
-    exhibit: "exhibit: HTML/CSS, 0 image bytes, shares the word’s keyframes and delays",
-    pause: "WCAG 2.2.2: looping motion needs a pause",
-    experience: "semantic: ol, time datetime",
-    footer: "0.7 KB of inline JS, html lang set, visible focus everywhere",
-  },
-
   colophon: {
     title: "How this site is built",
     description: "The stack, performance budget, accessibility approach and browser support for alexbwade.com.",
@@ -183,7 +174,7 @@ export const en = {
       {
         heading: "Performance",
         paragraphs: [
-          "The budget is under 300 KB on first load, including fonts and images, and LCP under 1.5 seconds on a simulated 4G connection. All animation is CSS. The only JavaScript is one small inline script for the pause and spec buttons, and there are no third-party scripts or analytics.",
+          "The budget is under 300 KB on first load, including fonts and images, and LCP under 1.5 seconds on a simulated 4G connection. All animation is CSS. The only JavaScript is one small inline script for the pause button, and there are no third-party scripts or analytics.",
         ],
       },
       {

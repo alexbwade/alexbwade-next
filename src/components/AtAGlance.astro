@@ -16,8 +16,9 @@ const resumeMeta = m.resumeMeta.replace("{size}", publicFileSize("alex-wade-resu
         </div>
       ))}
     </dl>
-    <a class="resume" href="/alex-wade-resume.pdf" type="application/pdf">
+    <a class="resume" href="/alex-wade-resume.pdf" type="application/pdf" target="_blank" rel="noopener">
       {m.resume} <span>{resumeMeta}</span>
+      <span class="visually-hidden">{m.newTab}</span>
     </a>
   </div>
 </section>

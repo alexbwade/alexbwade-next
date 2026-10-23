@@ -18,17 +18,11 @@ test.describe("accessibility", () => {
     });
   }
 
-  test("axe finds no violations with the spec layer on", async ({ page }) => {
-    await page.goto("/");
-    await page.getByRole("button", { name: "Show the spec" }).click();
-    await expectNoAxeViolations(page);
-  });
-
   test("the page has one h1, the landmarks and a working skip link", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("h1")).toHaveCount(1);
     await expect(page.getByRole("heading", { level: 1 })).toHaveAccessibleName(
-      "Hi, I’m Alex. I build the design systems, app shells and component APIs the next thousand stand on."
+      "Hi, I’m Alex. I build quality design systems, app shells and component APIs you can always rely on."
     );
     await expect(page.getByRole("banner")).toBeVisible();
     await expect(page.getByRole("navigation", { name: "Main" })).toBeVisible();
@@ -80,24 +74,6 @@ test.describe("motion", () => {
   });
 });
 
-test.describe("spec layer", () => {
-  test("is off by default and toggles on", async ({ page }) => {
-    await page.goto("/");
-    const notes = page.locator(".spec-note");
-    await expect(notes.first()).toBeHidden();
-    await page.getByRole("button", { name: "Show the spec" }).click();
-    await expect(notes.first()).toBeVisible();
-    await page.getByRole("button", { name: "Hide the spec" }).click();
-    await expect(notes.first()).toBeHidden();
-  });
-
-  test("is hidden below 1024px", async ({ page }) => {
-    await page.setViewportSize({ width: 1000, height: 900 });
-    await page.goto("/");
-    await expect(page.locator(".spec-toggle")).toBeHidden();
-  });
-});
-
 test.describe("without JavaScript", () => {
   test.use({ javaScriptEnabled: false });
 
@@ -105,12 +81,16 @@ test.describe("without JavaScript", () => {
     await page.goto("/");
     await expect(page.getByRole("link", { name: /Read my résumé/ })).toBeVisible();
     await expect(page.locator(".motion-toggle")).toBeHidden();
-    await expect(page.locator(".spec-toggle")).toBeHidden();
   });
 });
 
-test("the résumé link names its type and size", async ({ page, request }) => {
+test("the résumé links open the PDF in a new tab, and the main one names its size", async ({ page, request }) => {
   await page.goto("/");
+  for (const name of [/^Résumé/, /^Read my résumé/]) {
+    const resume = page.getByRole("link", { name });
+    await expect(resume).toHaveAttribute("target", "_blank");
+    await expect(resume).toHaveAccessibleName(/opens in a new tab/);
+  }
   const link = page.getByRole("link", { name: /Read my résumé/ });
   await expect(link).toHaveText(/PDF, \d+ KB/);
   const response = await request.get((await link.getAttribute("href")) ?? "");

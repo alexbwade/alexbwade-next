@@ -1,5 +1,5 @@
 // The only client JS. Base.astro minifies it and inlines it in <head>, so a saved pause choice applies before first
-// paint. data-js reveals the buttons that need it, and one delegated click listener handles both of them.
+// paint. data-js reveals the pause button, which needs this script to work.
 (() => {
   const root = document.documentElement;
   root.dataset.js = "";
@@ -9,18 +9,13 @@
     // Storage can be blocked; the default is to animate.
   }
 
-  // data-toggle="motion" sets data-motion="paused"; data-toggle="spec" sets data-spec="on".
   addEventListener("click", (event) => {
-    const button = event.target.closest("[data-toggle]");
-    if (!button) return;
-    const name = button.dataset.toggle;
-    const value = name === "motion" ? "paused" : "on";
-    const isOn = root.getAttribute(`data-${name}`) !== value;
-    if (isOn) root.setAttribute(`data-${name}`, value);
-    else root.removeAttribute(`data-${name}`);
-    if (name !== "motion") return;
+    if (!event.target.closest("[data-motion-toggle]")) return;
+    const isPaused = root.dataset.motion !== "paused";
+    if (isPaused) root.dataset.motion = "paused";
+    else root.removeAttribute("data-motion");
     try {
-      localStorage.setItem("motion", isOn ? "paused" : "running");
+      localStorage.setItem("motion", isPaused ? "paused" : "running");
     } catch {
       // The choice just won't persist.
     }

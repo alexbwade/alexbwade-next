@@ -4,35 +4,32 @@ import { t } from "../i18n";
 interface Props {
   /** Prefix for the in-page nav links, so they work from other pages. */
   base?: string;
-  showSpecToggle?: boolean;
 }
 
-const { base = "", showSpecToggle = false } = Astro.props;
-const m = t().header;
+const { base = "" } = Astro.props;
+const m = t();
 ---
 
 <a class="skip-link" href="#main">
-  {m.skipLink}
+  {m.header.skipLink}
 </a>
 <header class="header container">
   <a class="home" href={`${base}#top`}>
-    {m.home}
+    {m.header.home}
   </a>
-  <nav aria-label={m.navLabel}>
+  <nav aria-label={m.header.navLabel}>
     <ul>
-      {m.nav.map(({ href, label }) => (
+      {m.header.nav.map(({ href, label }) => (
         <li>
           <a href={`${base}${href}`}>{label}</a>
         </li>
       ))}
     </ul>
   </nav>
-  {showSpecToggle && (
-    <button type="button" class="btn spec-toggle js-only" data-toggle="spec">
-      <span data-when="off">{m.specShow}</span>
-      <span data-when="on">{m.specHide}</span>
-    </button>
-  )}
+  <a class="btn resume" href="/alex-wade-resume.pdf" type="application/pdf" target="_blank" rel="noopener">
+    {m.header.resume}
+    <span class="visually-hidden">{m.glance.newTab}</span>
+  </a>
 </header>
 
 <style>
@@ -60,6 +57,18 @@ const m = t().header;
     padding: 0;
     list-style: none;
     font-size: 15px;
+  }
+
+  .resume {
+    text-decoration: none;
+  }
+
+  /* On phones, keep the résumé link beside the name and give the nav its own row. */
+  @media (max-width: 600px) {
+    nav {
+      flex-basis: 100%;
+      order: 1;
+    }
   }
 
   nav a {

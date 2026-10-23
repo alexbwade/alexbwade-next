@@ -5,7 +5,6 @@ import courtyard from "../assets/alex-courtyard.jpg";
 import ExhibitSpecimen from "./ExhibitSpecimen.astro";
 import ExhibitShell from "./ExhibitShell.astro";
 import ExhibitCode from "./ExhibitCode.astro";
-import SpecNote from "./SpecNote.astro";
 
 const m = t();
 ---
@@ -38,12 +37,7 @@ const m = t();
       <ExhibitCode />
     </div>
 
-    <SpecNote style="left: 0; bottom: 12px; width: 320px; white-space: normal">{m.spec.photo}</SpecNote>
-    <SpecNote style="left: 344px; bottom: 12px; max-width: calc(100% - 524px); white-space: normal">
-      {m.spec.exhibit}
-    </SpecNote>
-    <SpecNote style="right: 0; bottom: 56px">{m.spec.pause}</SpecNote>
-    <button type="button" class="btn motion-toggle js-only" data-toggle="motion">
+    <button type="button" class="btn motion-toggle js-only" data-motion-toggle>
       <span data-when="running">{m.band.pause}</span>
       <span data-when="paused">{m.band.play}</span>
     </button>

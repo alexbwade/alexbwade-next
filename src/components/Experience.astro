@@ -1,16 +1,14 @@
 ---
 import { formatMonth, t } from "../i18n";
-import SpecNote from "./SpecNote.astro";
 
 const m = t();
 ---
 
 <section id="experience" class="container" aria-labelledby="experience-label">
-  <div class="section experience">
+  <div class="section">
     <h2 id="experience-label" class="section-label">
       {m.experience.label}
     </h2>
-    <SpecNote style="right: 0; top: 30px">{m.spec.experience}</SpecNote>
     <ol>
       {m.experience.jobs.map((job) => (
         <li>
@@ -31,10 +29,6 @@ const m = t();
 </section>
 
 <style>
-  .experience {
-    position: relative;
-  }
-
   ol {
     max-width: 760px;
     margin: 0 0 0 auto;

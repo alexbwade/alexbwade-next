@@ -35,7 +35,7 @@ export const GET: APIRoute = async () => {
           lineHeight: 0.98,
           letterSpacing: "-0.045em",
         },
-        [line(m.lead, colors.lead), line(`${m.before} ${m.rotating[0]}`), line(m.after)]
+        [line(m.lead, colors.lead), line(m.before), line(m.rotating[0] ?? "", colors.redline), line(m.after)]
       ),
     ]
   );
