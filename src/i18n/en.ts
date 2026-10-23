@@ -3,9 +3,8 @@
 export const en = {
   meta: {
     title: "Alex Wade, Staff Frontend Engineer",
-    // TODO(alex): review this description.
     description:
-      "I’m Alex Wade, a staff frontend engineer in Portland, Oregon. I build quality design systems, app shells and component APIs you can always rely on.",
+      "I’m Alex Wade, a Staff Frontend Engineer in Portland, Oregon. I build quality design systems, app shells and component APIs you can always rely on.",
     ogImageAlt: "Hi, I’m Alex. I build quality design systems you can always rely on.",
   },
 
