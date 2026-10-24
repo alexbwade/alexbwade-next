@@ -26,7 +26,7 @@ test.describe("accessibility", () => {
     await page.goto("/");
     await expect(page.locator("h1")).toHaveCount(1);
     await expect(page.getByRole("heading", { level: 1 })).toHaveAccessibleName(
-      "Hi, I’m Alex. I build quality design systems, app shells and component APIs you can always rely on."
+      "Hi, I’m Alex. I build quality design systems, micro-frontends and component APIs you can always rely on."
     );
     await expect(page.getByRole("banner")).toBeVisible();
     await expect(page.getByRole("navigation", { name: "Main" })).toBeVisible();
@@ -112,7 +112,7 @@ test.describe("spanish", () => {
     await page.goto("/es");
     await expect(page.locator("html")).toHaveAttribute("lang", "es");
     await expect(page.getByRole("heading", { level: 1 })).toHaveAccessibleName(
-      "Hola, soy Alex. Construyo sistemas de diseño, app shells y APIs de componentes de calidad que nunca fallan."
+      "Hola, soy Alex. Construyo sistemas de diseño, micro-frontends y APIs de componentes de calidad que nunca fallan."
     );
     await expect(page.getByRole("navigation", { name: "Principal" })).toBeVisible();
     await expect(page.locator("time").first()).toHaveText("ago 2023");

@@ -17,7 +17,7 @@ export const es: Messages = {
     jobTitle: "Staff Frontend Engineer",
     ogLocale: "es_ES",
     description:
-      "Soy Alex Wade, Staff Frontend Engineer en Portland, Oregón. Construyo sistemas de diseño, app shells y APIs de componentes de calidad que nunca fallan.",
+      "Soy Alex Wade, Staff Frontend Engineer en Portland, Oregón. Construyo sistemas de diseño, micro-frontends y APIs de componentes de calidad que nunca fallan.",
     ogImageAlt: "Hola, soy Alex. Construyo sistemas de diseño de calidad que nunca fallan.",
   },
 
@@ -36,10 +36,10 @@ export const es: Messages = {
 
   hero: {
     srHeadline:
-      "Hola, soy Alex. Construyo sistemas de diseño, app shells y APIs de componentes de calidad que nunca fallan.",
+      "Hola, soy Alex. Construyo sistemas de diseño, micro-frontends y APIs de componentes de calidad que nunca fallan.",
     lead: "Hola, soy Alex.",
     before: "Construyo",
-    rotating: ["sistemas de diseño", "app shells", "APIs de componentes"],
+    rotating: ["sistemas de diseño", "micro-frontends", "APIs de componentes"],
     after: "de calidad que nunca fallan.",
   },
 

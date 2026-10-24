@@ -10,7 +10,7 @@ export const en = {
     jobTitle: "Staff Frontend Engineer",
     ogLocale: "en_US",
     description:
-      "I’m Alex Wade, a Staff Frontend Engineer in Portland, Oregon. I build quality design systems, app shells and component APIs you can always rely on.",
+      "I’m Alex Wade, a Staff Frontend Engineer in Portland, Oregon. I build quality design systems, micro-frontends and component APIs you can always rely on.",
     ogImageAlt: "Hi, I’m Alex. I build quality design systems you can always rely on.",
   },
 
@@ -28,10 +28,11 @@ export const en = {
   },
 
   hero: {
-    srHeadline: "Hi, I’m Alex. I build quality design systems, app shells and component APIs you can always rely on.",
+    srHeadline:
+      "Hi, I’m Alex. I build quality design systems, micro-frontends and component APIs you can always rely on.",
     lead: "Hi, I’m Alex.",
     before: "I build quality",
-    rotating: ["design systems", "app shells", "component APIs"],
+    rotating: ["design systems", "micro-frontends", "component APIs"],
     after: "you can always rely on.",
   },
 
