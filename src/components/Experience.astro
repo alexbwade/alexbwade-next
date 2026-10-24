@@ -1,7 +1,8 @@
 ---
-import { formatMonth, t } from "../i18n";
+import { formatMonth, t, toLocale } from "../i18n";
 
-const m = t();
+const locale = toLocale(Astro.currentLocale);
+const m = t(locale);
 ---
 
 <section id="experience" class="container" aria-labelledby="experience-label">
@@ -17,8 +18,8 @@ const m = t();
             <div class="role">
               <span>{role.title}</span>
               <span>
-                <time datetime={role.start}>{formatMonth(role.start)}</time> –{" "}
-                {role.end ? <time datetime={role.end}>{formatMonth(role.end)}</time> : m.experience.present}
+                <time datetime={role.start}>{formatMonth(role.start, locale)}</time> –{" "}
+                {role.end ? <time datetime={role.end}>{formatMonth(role.end, locale)}</time> : m.experience.present}
               </span>
             </div>
           ))}

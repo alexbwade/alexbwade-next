@@ -1,7 +1,8 @@
 ---
-import { t } from "../i18n";
+import { t, toLocale } from "../i18n";
 
-const label = t().band.code.buttonLabel;
+const locale = toLocale(Astro.currentLocale);
+const label = t(locale).band.code.buttonLabel;
 ---
 
 <div class="code-panel">

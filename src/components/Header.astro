@@ -1,35 +1,44 @@
 ---
-import { t } from "../i18n";
+import { cleanPath, localePath, locales, t, toLocale, unlocalizedPath } from "../i18n";
 
-interface Props {
-  /** Prefix for the in-page nav links, so they work from other pages. */
-  base?: string;
-}
-
-const { base = "" } = Astro.props;
-const m = t();
+const locale = toLocale(Astro.currentLocale);
+const m = t(locale);
+const path = unlocalizedPath(cleanPath(Astro.url.pathname));
+// On the home page the nav links are in-page anchors; elsewhere they lead back to the home page first.
+const home = path === "/" ? "" : localePath(locale, "/");
+// The same page in each other language. The 404 page already shows every language, so it gets no switcher.
+const alternates = locales
+  .filter((other) => other !== locale && path !== "/404")
+  .map((other) => ({ locale: other, href: localePath(other, path), label: t(other).languageName }));
 ---
 
 <a class="skip-link" href="#main">
   {m.header.skipLink}
 </a>
 <header class="header container">
-  <a class="home" href={`${base}#top`}>
+  <a class="home" href={`${home}#top`}>
     {m.header.home}
   </a>
   <nav aria-label={m.header.navLabel}>
     <ul>
       {m.header.nav.map(({ href, label }) => (
         <li>
-          <a href={`${base}${href}`}>{label}</a>
+          <a href={`${home}${href}`}>{label}</a>
         </li>
       ))}
     </ul>
   </nav>
-  <a class="btn resume" href="/alex-wade-resume.pdf" type="application/pdf" target="_blank" rel="noopener">
-    {m.header.resume}
-    <span class="visually-hidden">{m.glance.newTab}</span>
-  </a>
+  <div class="actions">
+    {alternates.map((alternate) => (
+      <a class="language" href={alternate.href} hreflang={alternate.locale} lang={alternate.locale}>
+        {alternate.label}
+      </a>
+    ))}
+    <a class="btn resume" href="/alex-wade-resume.pdf" type="application/pdf" target="_blank" rel="noopener">
+      {m.header.resume}
+      <span class="visually-hidden">{m.glance.newTab}</span>
+    </a>
+  </div>
 </header>
 
 <style>
@@ -59,6 +68,23 @@ const m = t();
     font-size: 15px;
   }
 
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .language {
+    display: block;
+    padding-block: 12px;
+    font-size: 15px;
+    color: var(--muted);
+  }
+
+  .language:hover {
+    color: var(--redline);
+  }
+
   .resume {
     border-color: var(--redline);
     color: var(--redline);
@@ -70,7 +96,7 @@ const m = t();
     color: var(--paper);
   }
 
-  /* On phones, keep the résumé link beside the name and give the nav its own row. */
+  /* On phones, keep the language and résumé links beside the name and give the nav its own row. */
   @media (max-width: 600px) {
     nav {
       flex-basis: 100%;

@@ -32,3 +32,8 @@
   --ease: cubic-bezier(0.65, 0, 0.35, 1);
   --swap-duration: 7.5s;
 }
+
+/* Spanish runs longer: "Construyo APIs de componentes" is 14.2em wide, so it needs a smaller cap to stay on one line. */
+:root:lang(es) {
+  --text-h1: clamp(40px, 6.3vw, 75px);
+}

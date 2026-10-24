@@ -20,7 +20,8 @@ The first `yarn test` needs a browser: `yarn playwright install chromium`.
 
 ## Where things live
 
-- All copy is in `src/i18n/en.ts`. Components read it through `t()` in `src/i18n/index.ts`.
+- All copy is in `src/i18n/en.ts` (English) and `src/i18n/es.ts` (Spanish, served under `/es`). Components read the
+  current page's language through `t()` and `toLocale()` in `src/i18n/index.ts`.
 - Design tokens are CSS custom properties in `src/styles/tokens.css`.
 - The only client JS is `src/scripts/controls.js`, minified and inlined into `<head>` at build time by
   `src/layouts/Base.astro`.

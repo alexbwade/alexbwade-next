@@ -1,9 +1,10 @@
 ---
 import { Picture } from "astro:assets";
-import { t } from "../i18n";
+import { t, toLocale } from "../i18n";
 import stringLights from "../assets/alex-string-lights.jpg";
 
-const m = t().about;
+const locale = toLocale(Astro.currentLocale);
+const m = t(locale).about;
 ---
 
 <section id="about" class="container" aria-labelledby="about-label">

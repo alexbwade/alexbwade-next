@@ -1,8 +1,9 @@
 ---
-import { t } from "../i18n";
+import { t, toLocale } from "../i18n";
 import { publicFileSize } from "../lib/fileSize";
 
-const m = t().glance;
+const locale = toLocale(Astro.currentLocale);
+const m = t(locale).glance;
 const resumeMeta = m.resumeMeta.replace("{size}", publicFileSize("alex-wade-resume.pdf"));
 ---
 

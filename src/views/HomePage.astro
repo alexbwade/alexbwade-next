@@ -1,0 +1,28 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Band from "../components/Band.astro";
+import AtAGlance from "../components/AtAGlance.astro";
+import About from "../components/About.astro";
+import Work from "../components/Work.astro";
+import Experience from "../components/Experience.astro";
+import Footer from "../components/Footer.astro";
+import { t, toLocale } from "../i18n";
+import "../styles/motion.css";
+
+const m = t(toLocale(Astro.currentLocale)).meta;
+---
+
+<Base title={m.title} description={m.description}>
+  <Header />
+  <main id="main">
+    <Hero />
+    <Band />
+    <AtAGlance />
+    <About />
+    <Work />
+    <Experience />
+  </main>
+  <Footer />
+</Base>

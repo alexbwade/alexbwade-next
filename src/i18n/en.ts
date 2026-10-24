@@ -1,8 +1,14 @@
 // Every user-facing string on the site. A new locale copies this file and must match its shape.
 
 export const en = {
+  // This language's own name, shown in the language switcher on the other language's pages.
+  languageName: "English",
+
   meta: {
     title: "Alex Wade, Staff Frontend Engineer",
+    siteName: "Alex Wade",
+    jobTitle: "Staff Frontend Engineer",
+    ogLocale: "en_US",
     description:
       "I’m Alex Wade, a Staff Frontend Engineer in Portland, Oregon. I build quality design systems, app shells and component APIs you can always rely on.",
     ogImageAlt: "Hi, I’m Alex. I build quality design systems you can always rely on.",
@@ -171,6 +177,7 @@ export const en = {
         paragraphs: [
           "A static site built with Astro and TypeScript, hosted on Vercel. There is no UI framework. The type is Schibsted Grotesk, self-hosted, with a metric-matched fallback so the page doesn’t shift when the font loads.",
           "Photos go through Astro’s image pipeline and are served as AVIF and WebP at the sizes they’re shown. The examples beside the portrait are plain HTML and CSS, so they cost no image bytes.",
+          "All copy lives in one file per language, so the Spanish version uses the same components as the English one.",
         ],
       },
       {
