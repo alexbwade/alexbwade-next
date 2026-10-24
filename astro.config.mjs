@@ -13,7 +13,7 @@ export default defineConfig({
   },
   i18n: {
     defaultLocale: "en",
-    locales: ["en"],
+    locales: ["en", "es"],
     routing: { prefixDefaultLocale: false },
   },
   fonts: [
@@ -41,5 +41,6 @@ export default defineConfig({
   security: { csp: true },
   // No Markdown code blocks here, and Shiki's inline styles would conflict with the CSP.
   markdown: { syntaxHighlight: false },
-  integrations: [sitemap()],
+  // Adds hreflang alternates between the English and Spanish URLs in the sitemap.
+  integrations: [sitemap({ i18n: { defaultLocale: "en", locales: { en: "en", es: "es" } } })],
 });

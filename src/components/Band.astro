@@ -1,12 +1,13 @@
 ---
 import { Picture } from "astro:assets";
-import { t } from "../i18n";
+import { t, toLocale } from "../i18n";
 import courtyard from "../assets/alex-courtyard.jpg";
 import ExhibitSpecimen from "./ExhibitSpecimen.astro";
 import ExhibitShell from "./ExhibitShell.astro";
 import ExhibitCode from "./ExhibitCode.astro";
 
-const m = t();
+const locale = toLocale(Astro.currentLocale);
+const m = t(locale);
 ---
 
 <section class="band container" aria-label={m.band.label} data-band>

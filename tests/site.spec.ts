@@ -2,6 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 
 const widths = [320, 375, 768, 1280, 1920];
+const pages = ["/", "/colophon", "/es", "/es/colophon"];
 
 async function expectNoAxeViolations(page: Page) {
   const { violations } = await new AxeBuilder({ page })
@@ -11,7 +12,7 @@ async function expectNoAxeViolations(page: Page) {
 }
 
 test.describe("accessibility", () => {
-  for (const path of ["/", "/colophon", "/no-such-page"]) {
+  for (const path of [...pages, "/no-such-page"]) {
     for (const width of [375, 1280]) {
       test(`axe finds no violations on ${path} at ${width}px`, async ({ page }) => {
         await page.setViewportSize({ width, height: 900 });
@@ -25,7 +26,7 @@ test.describe("accessibility", () => {
     await page.goto("/");
     await expect(page.locator("h1")).toHaveCount(1);
     await expect(page.getByRole("heading", { level: 1 })).toHaveAccessibleName(
-      "Hi, I’m Alex. I build quality design systems, app shells and component APIs you can always rely on."
+      "Hi, I’m Alex. I build quality design systems, micro-frontends and component APIs you can always rely on."
     );
     await expect(page.getByRole("banner")).toBeVisible();
     await expect(page.getByRole("navigation", { name: "Main" })).toBeVisible();
@@ -40,7 +41,7 @@ test.describe("accessibility", () => {
 });
 
 test.describe("health", () => {
-  for (const path of ["/", "/colophon"]) {
+  for (const path of pages) {
     test(`${path} loads with no console errors or CSP violations`, async ({ page }) => {
       const errors: string[] = [];
       page.on("console", (message) => {
@@ -50,7 +51,7 @@ test.describe("health", () => {
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto(path, { waitUntil: "networkidle" });
       // Exercise the inline script too, where there is something for it to do.
-      const pause = page.getByRole("button", { name: "Pause animation" });
+      const pause = page.getByRole("button", { name: /^(Pause animation|Pausar animación)$/ });
       if (await pause.count()) await pause.click();
       expect(errors).toEqual([]);
     });
@@ -69,6 +70,7 @@ test.describe("health", () => {
     const response = await page.goto("/no-such-page");
     expect(response?.status()).toBe(404);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("This page doesn’t exist.");
+    await expect(page.getByRole("heading", { level: 2, name: "Esta página no existe." })).toBeVisible();
   });
 });
 
@@ -76,7 +78,7 @@ test.describe("layout", () => {
   for (const width of widths) {
     test(`no horizontal scroll at ${width}px`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 });
-      for (const path of ["/", "/colophon"]) {
+      for (const path of pages) {
         await page.goto(path);
         expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
       }
@@ -86,21 +88,67 @@ test.describe("layout", () => {
 
 test.describe("headline", () => {
   // The rotator is as wide as its widest phrase, so this covers all three.
-  for (const width of [640, 768, 1024, 1280, 1920]) {
-    test(`"I build quality <phrase>" stays on one line at ${width}px`, async ({ page }) => {
-      await page.setViewportSize({ width, height: 900 });
-      await page.goto("/");
-      await page.evaluate(() => document.fonts.ready);
-      const { lineHeight, fontSize } = await page
-        .locator(".line")
-        .nth(1)
-        .evaluate((line) => ({
-          lineHeight: line.getBoundingClientRect().height,
-          fontSize: parseFloat(getComputedStyle(line).fontSize),
-        }));
-      expect(lineHeight).toBeLessThan(fontSize * 1.5);
+  for (const path of ["/", "/es"]) {
+    for (const width of [640, 768, 1024, 1280, 1920]) {
+      test(`the rotating line stays on one line on ${path} at ${width}px`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(path);
+        await page.evaluate(() => document.fonts.ready);
+        const { lineHeight, fontSize } = await page
+          .locator(".line")
+          .nth(1)
+          .evaluate((line) => ({
+            lineHeight: line.getBoundingClientRect().height,
+            fontSize: parseFloat(getComputedStyle(line).fontSize),
+          }));
+        expect(lineHeight).toBeLessThan(fontSize * 1.5);
+      });
+    }
+  }
+});
+
+test.describe("spanish", () => {
+  test("the Spanish home page is in Spanish, with its own headline, dates and skip link", async ({ page }) => {
+    await page.goto("/es");
+    await expect(page.locator("html")).toHaveAttribute("lang", "es");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveAccessibleName(
+      "Hola, soy Alex. Construyo sistemas de diseño, micro-frontends y APIs de componentes de calidad que nunca fallan."
+    );
+    await expect(page.getByRole("navigation", { name: "Principal" })).toBeVisible();
+    await expect(page.locator("time").first()).toHaveText("ago 2023");
+    await page.keyboard.press("Tab");
+    await expect(page.getByRole("link", { name: "Saltar al contenido" })).toBeFocused();
+  });
+
+  for (const [from, to, label] of [
+    ["/", "/es", "Español"],
+    ["/colophon", "/es/colophon", "Español"],
+    ["/es/colophon", "/colophon", "English"],
+  ] as const) {
+    test(`the language switcher on ${from} leads to ${to}`, async ({ page }) => {
+      await page.goto(from);
+      const link = page.getByRole("link", { name: label, exact: true });
+      await expect(link).toHaveAttribute("lang", to.startsWith("/es") ? "es" : "en");
+      await link.click();
+      await expect(page).toHaveURL(new RegExp(`${to}$`));
     });
   }
+
+  test("each page lists both languages as hreflang alternates", async ({ page }) => {
+    await page.goto("/es/colophon");
+    const alternates = await page
+      .locator('link[rel="alternate"][hreflang]')
+      .evaluateAll((links) =>
+        links.map((link) => `${link.getAttribute("hreflang")} ${new URL(link.getAttribute("href") ?? "").pathname}`)
+      );
+    expect(alternates).toEqual(["en /colophon", "es /es/colophon", "x-default /colophon"]);
+  });
+
+  test("the Spanish résumé link says the PDF is in English", async ({ page }) => {
+    await page.goto("/es");
+    await expect(page.getByRole("link", { name: /Ver mi currículum/ })).toHaveText(/PDF en inglés, \d+ KB/);
+    await expect(page.getByRole("link", { name: /^Currículum/ })).toHaveAccessibleName(/se abre en una pestaña nueva/);
+  });
 });
 
 test.describe("motion", () => {

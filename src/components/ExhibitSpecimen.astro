@@ -1,7 +1,8 @@
 ---
-import { t } from "../i18n";
+import { t, toLocale } from "../i18n";
 
-const m = t().band.specimen;
+const locale = toLocale(Astro.currentLocale);
+const m = t(locale).band.specimen;
 ---
 
 <div class="specimen">

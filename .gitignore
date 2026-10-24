@@ -49,3 +49,5 @@ todo.md
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+# claude code session worktrees
+.claude/worktrees/

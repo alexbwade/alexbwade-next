@@ -1,19 +1,32 @@
 ---
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
-import { t } from "../i18n";
+import { defaultLocale, localePath, locales, t } from "../i18n";
 
-const m = t().notFound;
+// Vercel serves this one page for every missing URL, so it speaks every language, English first.
+const m = t(defaultLocale).notFound;
+const others = locales
+  .filter((locale) => locale !== defaultLocale)
+  .map((locale) => ({ locale, m: t(locale).notFound, home: localePath(locale, "/") }));
 ---
 
-<Base title={`${m.title} · Alex Wade`} description={m.body}>
-  <Header base="/" />
+<Base title={`${m.title} · Alex Wade`} description={m.body} indexable={false}>
+  <Header />
   <main id="main" class="container">
     <h1 id="top">{m.heading}</h1>
     <p>{m.body}</p>
     <p>
       <a href="/">{m.home}</a>
     </p>
+    {others.map((other) => (
+      <div class="other" lang={other.locale}>
+        <h2>{other.m.heading}</h2>
+        <p>{other.m.body}</p>
+        <p>
+          <a href={other.home}>{other.m.home}</a>
+        </p>
+      </div>
+    ))}
   </main>
 </Base>
 
@@ -41,6 +54,18 @@ const m = t().notFound;
 
   p + p {
     margin-top: 24px;
+  }
+
+  .other {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+  }
+
+  h2 {
+    margin: 0 0 16px;
+    font-size: 22px;
+    font-weight: 500;
   }
 
   a {

@@ -1,7 +1,8 @@
 ---
-import { t } from "../i18n";
+import { t, toLocale } from "../i18n";
 
-const m = t().hero;
+const locale = toLocale(Astro.currentLocale);
+const m = t(locale).hero;
 ---
 
 <section id="top" class="hero container">
