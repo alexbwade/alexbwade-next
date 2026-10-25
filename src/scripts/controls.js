@@ -21,8 +21,20 @@
     }
   });
 
-  // Pause the loop while the band is scrolled out of view.
   addEventListener("DOMContentLoaded", () => {
+    // Mark the header once it is stuck to the top, which shows its backdrop.
+    const header = document.querySelector(".header");
+    if (header) {
+      const markStuck = () => {
+        const stickyTop = parseFloat(getComputedStyle(header).top);
+        header.toggleAttribute("data-stuck", header.getBoundingClientRect().top <= stickyTop);
+      };
+      markStuck();
+      addEventListener("scroll", markStuck, { passive: true });
+      addEventListener("resize", markStuck, { passive: true });
+    }
+
+    // Pause the loop while the band is scrolled out of view.
     const band = document.querySelector("[data-band]");
     if (!band) return;
     new IntersectionObserver(([entry]) => {
