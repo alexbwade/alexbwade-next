@@ -49,6 +49,82 @@ const alternates = locales
     align-items: center;
     gap: 12px 24px;
     padding-block: 24px;
+    /* Sticks once it has scrolled up 16px, so the stuck bar is shorter than the resting one. */
+    position: sticky;
+    top: -16px;
+    z-index: 5;
+  }
+
+  /* The bar's backdrop, full-bleed although the header itself is container width. body clips the overflow. */
+  .header::before,
+  .header::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    pointer-events: none;
+  }
+
+  .header::before {
+    inset-block: 0;
+    z-index: -1;
+    background: color-mix(in srgb, var(--paper) 82%, transparent);
+    backdrop-filter: blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    box-shadow: 0 1px 0 var(--rule);
+  }
+
+  /* Reading progress: a redline that draws across the bottom of the bar as the page scrolls. */
+  .header::after {
+    bottom: -1px;
+    height: 2px;
+    background: var(--redline);
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  /*
+   * Everything is tied to scroll position, so it runs on the compositor and tracks the scrollbar exactly. Browsers
+   * without scroll-driven animations get the plain frosted bar above.
+   */
+  @supports (animation-timeline: scroll()) {
+    .header::before {
+      animation: header-fill linear both;
+      animation-timeline: scroll();
+      animation-range: 0 96px;
+    }
+
+    .header::after {
+      animation: header-progress linear both;
+      animation-timeline: scroll();
+    }
+
+    /* Shifts the contents down half the 16px the bar loses, so they stay centred in it. */
+    .header > * {
+      animation: header-settle linear both;
+      animation-timeline: scroll();
+      animation-range: 0 16px;
+    }
+  }
+
+  @keyframes header-fill {
+    from {
+      opacity: 0;
+      box-shadow: 0 1px 0 transparent;
+    }
+  }
+
+  @keyframes header-progress {
+    to {
+      transform: none;
+    }
+  }
+
+  @keyframes header-settle {
+    to {
+      translate: 0 var(--settle, 8px);
+    }
   }
 
   .home {
@@ -101,6 +177,25 @@ const alternates = locales
     nav {
       flex-basis: 100%;
       order: 1;
+    }
+
+    /*
+     * Two rows is too tall to keep on a phone screen, so the name row scrolls away and only the nav row sticks:
+     * 24px padding + the 44px row + the 12px gap. The settle then moves the links 10px down to centre them.
+     */
+    .header {
+      --settle: 10px;
+      top: -80px;
+    }
+
+    .header > * {
+      animation-range: 60px 80px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .header > * {
+      animation: none;
     }
   }
 
