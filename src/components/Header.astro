@@ -226,6 +226,7 @@ const alternates = locales
       width: 28px;
       height: 44px;
       padding: 0;
+      background: none;
     }
 
     .mark span {
@@ -294,6 +295,34 @@ const alternates = locales
   ul a {
     display: block;
     padding-block: 12px;
+    /* An underline in the text colour that grows from the left, for hover and for the current section. */
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 calc(100% - 7px) / 0 2px;
     text-decoration: none;
+    transition:
+      color 0.25s var(--ease),
+      background-size 0.35s var(--ease);
+  }
+
+  /*
+   * Hover gets an ink underline rather than the site's usual redline colour, so a link the pointer happens to rest on
+   * is never mistaken for the current section. Touch screens skip it, because a tapped link stays hovered.
+   */
+  ul a:hover {
+    color: var(--ink);
+  }
+
+  @media (hover: hover) {
+    ul a:hover {
+      background-size: 100% 1px;
+    }
+  }
+
+  /*
+   * The current section, set from scroll in controls.js. The colour alone is too close to ink to mark it, so it also
+   * gets a thicker underline.
+   */
+  ul a[aria-current] {
+    color: var(--redline);
+    background-size: 100% 2px;
   }
 </style>
