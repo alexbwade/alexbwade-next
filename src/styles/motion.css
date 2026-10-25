@@ -50,17 +50,17 @@
 
 .rotator > :nth-child(1),
 .exhibit > :nth-child(1) {
-  animation-delay: 900ms;
+  animation-delay: calc(900ms + var(--swap-shift, 0ms));
 }
 
 .rotator > :nth-child(2),
 .exhibit > :nth-child(2) {
-  animation-delay: 3400ms;
+  animation-delay: calc(3400ms + var(--swap-shift, 0ms));
 }
 
 .rotator > :nth-child(3),
 .exhibit > :nth-child(3) {
-  animation-delay: 5900ms;
+  animation-delay: calc(5900ms + var(--swap-shift, 0ms));
 }
 
 @keyframes swap {
@@ -93,6 +93,26 @@
 html[data-motion="paused"] :is(.rotator > span, .exhibit > div),
 html[data-offscreen] :is(.rotator > span, .exhibit > div) {
   animation-play-state: paused;
+}
+
+/*
+ * A load that starts paused (controls.js) would freeze every word and panel in its hidden starting position, inside
+ * the first delay. Instead it shows the first word and panel, standing still.
+ */
+html[data-paused-on-load] :is(.rotator > span, .exhibit > div) {
+  animation: none;
+}
+
+html[data-paused-on-load] :is(.rotator, .exhibit) > :first-child {
+  transform: none;
+}
+
+/*
+ * Playing from there starts the loop where the first word has just arrived (its 900ms delay plus 5% of the cycle),
+ * so the word on screen doesn't drop out and slide back in.
+ */
+html[data-resumed-from-load] {
+  --swap-shift: calc(-900ms - var(--swap-duration) * 0.05);
 }
 
 /*
