@@ -17,6 +17,7 @@ export const en = {
   header: {
     skipLink: "Skip to content",
     home: "Alex Wade",
+    backToTop: "Back to top",
     navLabel: "Main",
     nav: [
       { href: "#about", label: "About" },

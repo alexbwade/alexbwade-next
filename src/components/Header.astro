@@ -21,6 +21,11 @@ const alternates = locales
   </a>
   <nav aria-label={m.header.navLabel}>
     <ul>
+      <li class="mark">
+        <a href={`${home}#top`} aria-label={home ? m.header.home : m.header.backToTop}>
+          <span aria-hidden="true">AW</span>
+        </a>
+      </li>
       {m.header.nav.map(({ href, label }) => (
         <li>
           <a href={`${home}${href}`}>{label}</a>
@@ -162,11 +167,111 @@ const alternates = locales
     color: var(--paper);
   }
 
+  /* The favicon's monogram, which leads back to the top from the stuck phone bar. Phones only; see below. */
+  .mark {
+    display: none;
+  }
+
   /* On phones, keep the language and résumé links beside the name and give the nav its own row. */
   @media (max-width: 600px) {
     nav {
       flex-basis: 100%;
       order: 1;
+    }
+
+    /*
+     * Spread the links across the row, like the name and résumé above them. Every item but the last grows by an equal
+     * share of the spare room, which spaces them like space-between, but through flex-grow, which can be animated.
+     */
+    ul {
+      column-gap: 0;
+    }
+
+    li {
+      flex: 1 0 auto;
+      padding-inline-end: 8px;
+    }
+
+    li:last-child {
+      flex: 0 0 auto;
+      padding-inline-end: 0;
+    }
+
+    ul a {
+      width: fit-content;
+    }
+
+    /*
+     * The name row scrolls away when the bar sticks, so the monogram slides in to stand for it. It grows from nothing
+     * into a full share of the row, which moves the links over smoothly instead of all at once and leaves it spaced
+     * like the links. Hidden, it is also out of the tab order.
+     */
+    .mark {
+      display: block;
+      flex: 0 0 0;
+      padding-inline-end: 0;
+      overflow: hidden;
+      visibility: hidden;
+    }
+
+    .header[data-stuck] .mark {
+      flex: 1 0 36px;
+      padding-inline-end: 8px;
+      visibility: visible;
+    }
+
+    .mark a {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 44px;
+      padding: 0;
+    }
+
+    .mark span {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 5px;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      opacity: 0;
+      scale: 0.6;
+    }
+
+    .mark a:hover span {
+      background: var(--redline);
+    }
+
+    .header[data-stuck] .mark span {
+      opacity: 1;
+      scale: 1;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .mark {
+        transition:
+          flex 0.35s var(--ease),
+          padding 0.35s var(--ease),
+          visibility 0s 0.35s;
+      }
+
+      .header[data-stuck] .mark {
+        transition:
+          flex 0.35s var(--ease),
+          padding 0.35s var(--ease);
+      }
+
+      .mark span {
+        transition:
+          opacity 0.35s var(--ease),
+          scale 0.35s var(--ease),
+          background-color 0.15s;
+      }
     }
 
     /*
@@ -179,7 +284,14 @@ const alternates = locales
     }
   }
 
-  nav a {
+  /* The Spanish links need 322px with the monogram, so on the narrowest phones they keep the row to themselves. */
+  @media (max-width: 359px) {
+    :global(:root:lang(es)) .mark {
+      display: none;
+    }
+  }
+
+  ul a {
     display: block;
     padding-block: 12px;
     text-decoration: none;
