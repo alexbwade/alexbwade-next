@@ -95,13 +95,25 @@ html[data-offscreen] :is(.rotator > span, .exhibit > div) {
   animation-play-state: paused;
 }
 
+/*
+ * Both labels share one grid cell and the inactive one is only hidden, so the button keeps the longer label's width
+ * when it switches. Hidden labels are also left out of the button's accessible name.
+ */
+.motion-toggle {
+  display: inline-grid;
+}
+
+.motion-toggle > [data-when] {
+  grid-area: 1 / 1;
+}
+
 .motion-toggle [data-when="paused"],
 html[data-motion="paused"] .motion-toggle [data-when="running"] {
-  display: none;
+  visibility: hidden;
 }
 
 html[data-motion="paused"] .motion-toggle [data-when="paused"] {
-  display: inline;
+  visibility: visible;
 }
 
 @media (prefers-reduced-motion: reduce) {
