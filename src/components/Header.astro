@@ -21,6 +21,11 @@ const alternates = locales
   </a>
   <nav aria-label={m.header.navLabel}>
     <ul>
+      <li class="mark">
+        <a href={`${home}#top`} aria-label={home ? m.header.home : m.header.backToTop}>
+          <span aria-hidden="true">AW</span>
+        </a>
+      </li>
       {m.header.nav.map(({ href, label }) => (
         <li>
           <a href={`${home}${href}`}>{label}</a>
@@ -43,12 +48,78 @@ const alternates = locales
 
 <style>
   .header {
+    /*
+     * How far the bar's backdrop sits inside the header's 24px padding. The bottom keeps 2px more, because the
+     * shadow and the progress line make the space below the links look smaller than it is.
+     */
+    --bar-top: 8px;
+    --bar-bottom: 6px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 12px 24px;
     padding-block: 24px;
+    /* Sticks once the top inset has scrolled away, so the backdrop meets the top of the screen. */
+    position: sticky;
+    top: calc(-1 * var(--bar-top));
+    z-index: 5;
+  }
+
+  /*
+   * The bar's backdrop, full-bleed although the header itself is container width; body clips the overflow. It is
+   * inset equally top and bottom, so the stuck bar is shorter than the resting header and the content stays centred.
+   */
+  .header::before,
+  .header::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    pointer-events: none;
+  }
+
+  .header::before {
+    inset-block: var(--bar-top) var(--bar-bottom);
+    z-index: -1;
+    background: color-mix(in srgb, var(--paper) 94%, transparent);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    box-shadow:
+      0 1px 0 rgb(23 32 46 / 0.06),
+      0 8px 20px -12px rgb(23 32 46 / 0.18);
+    opacity: 0;
+    transition: opacity 0.35s var(--ease);
+  }
+
+  /* controls.js sets data-stuck. Without it, the bar is always on so text never scrolls under bare letters. */
+  .header[data-stuck]::before,
+  html:not([data-js]) .header::before {
+    opacity: 1;
+  }
+
+  /* Reading progress: a redline that draws across the bottom of the bar as the page scrolls. */
+  .header::after {
+    bottom: var(--bar-bottom);
+    height: 2px;
+    background: var(--redline);
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  /* Tied to scroll position, so it tracks the scrollbar exactly. Browsers without scroll timelines skip it. */
+  @supports (animation-timeline: scroll()) {
+    .header::after {
+      animation: header-progress linear both;
+      animation-timeline: scroll();
+    }
+  }
+
+  @keyframes header-progress {
+    to {
+      transform: none;
+    }
   }
 
   .home {
@@ -96,17 +167,173 @@ const alternates = locales
     color: var(--paper);
   }
 
+  /* The favicon's monogram, which leads back to the top from the stuck phone bar. Phones only; see below. */
+  .mark {
+    display: none;
+  }
+
   /* On phones, keep the language and résumé links beside the name and give the nav its own row. */
   @media (max-width: 600px) {
     nav {
       flex-basis: 100%;
       order: 1;
     }
+
+    /*
+     * Spread the links across the row, like the name and résumé above them. Every item but the last grows by an equal
+     * share of the spare room, which spaces them like space-between, but through flex-grow, which can be animated.
+     */
+    ul {
+      column-gap: 0;
+    }
+
+    li {
+      flex: 1 0 auto;
+      padding-inline-end: 8px;
+    }
+
+    li:last-child {
+      flex: 0 0 auto;
+      padding-inline-end: 0;
+    }
+
+    ul a {
+      width: fit-content;
+    }
+
+    /*
+     * The name row scrolls away when the bar sticks, so the monogram slides in to stand for it. It grows from nothing
+     * into a full share of the row, which moves the links over smoothly instead of all at once and leaves it spaced
+     * like the links. Hidden, it is also out of the tab order.
+     */
+    .mark {
+      display: block;
+      flex: 0 0 0;
+      padding-inline-end: 0;
+      overflow: hidden;
+      visibility: hidden;
+    }
+
+    .header[data-stuck] .mark {
+      flex: 1 0 36px;
+      padding-inline-end: 8px;
+      visibility: visible;
+    }
+
+    .mark a {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 44px;
+      padding: 0;
+      background: none;
+    }
+
+    .mark span {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 5px;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      opacity: 0;
+      scale: 0.6;
+    }
+
+    .mark a:hover span {
+      background: var(--redline);
+    }
+
+    .header[data-stuck] .mark span {
+      opacity: 1;
+      scale: 1;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .mark {
+        transition:
+          flex 0.35s var(--ease),
+          padding 0.35s var(--ease),
+          visibility 0s 0.35s;
+      }
+
+      .header[data-stuck] .mark {
+        transition:
+          flex 0.35s var(--ease),
+          padding 0.35s var(--ease);
+      }
+
+      .mark span {
+        transition:
+          opacity 0.35s var(--ease),
+          scale 0.35s var(--ease),
+          background-color 0.15s;
+      }
+    }
+
+    /*
+     * Two rows is too tall to keep on a phone screen, so the name row scrolls away and only the nav row sticks. The
+     * backdrop starts 8px above the nav (24px padding + the 44px row + the 12px gap - 8px) and ends 10px below it.
+     */
+    .header {
+      --bar-top: 72px;
+      --bar-bottom: 14px;
+    }
   }
 
-  nav a {
+  /* The Spanish links need 322px with the monogram, so on the narrowest phones they keep the row to themselves. */
+  @media (max-width: 359px) {
+    :global(:root:lang(es)) .mark {
+      display: none;
+    }
+  }
+
+  ul a {
     display: block;
     padding-block: 12px;
+    /* Makes the link 44px tall, so the underlines below land on whole pixels instead of blurring across two. */
+    line-height: 20px;
+    /*
+     * Two underlines in the text colour that grow from the left: 1px for hover, 2px for the current section. Each
+     * keeps its own thickness, so only its width animates.
+     */
+    background:
+      linear-gradient(currentColor, currentColor) no-repeat 0 calc(100% - 7px) / 0 1px,
+      linear-gradient(currentColor, currentColor) no-repeat 0 calc(100% - 7px) / 0 2px;
     text-decoration: none;
+    transition:
+      color 0.25s var(--ease),
+      background-size 0.35s var(--ease);
+  }
+
+  /*
+   * Hover gets an ink underline rather than the site's usual redline colour, so a link the pointer happens to rest on
+   * is never mistaken for the current section. Touch screens skip it, because a tapped link stays hovered.
+   */
+  ul a:hover {
+    color: var(--ink);
+  }
+
+  @media (hover: hover) {
+    ul a:hover {
+      background-size:
+        100% 1px,
+        0 2px;
+    }
+  }
+
+  /*
+   * The current section, set from scroll in controls.js. The colour alone is too close to ink to mark it, so it also
+   * gets the thicker underline.
+   */
+  ul a[aria-current] {
+    color: var(--redline);
+    background-size:
+      0 1px,
+      100% 2px;
   }
 </style>

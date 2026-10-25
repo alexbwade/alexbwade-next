@@ -10,6 +10,8 @@ html {
   font-family: var(--font-sans);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Keeps anchor targets and focused elements clear of the sticky header. */
+  scroll-padding-top: 88px;
 }
 
 body {

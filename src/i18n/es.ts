@@ -24,6 +24,7 @@ export const es: Messages = {
   header: {
     skipLink: "Saltar al contenido",
     home: "Alex Wade",
+    backToTop: "Volver arriba",
     navLabel: "Principal",
     nav: [
       { href: "#about", label: "Sobre mí" },
