@@ -139,6 +139,13 @@ p {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn[data-label]::after {
+    transition: none;
+  }
+}
+
 /* Controls that only work with the inline script. The script sets data-js in <head>, so they never pop in. */
 html:not([data-js]) .js-only {
   display: none;
