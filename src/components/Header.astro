@@ -39,7 +39,14 @@ const alternates = locales
         {alternate.label}
       </a>
     ))}
-    <a class="btn resume" href="/alex-wade-resume.pdf" type="application/pdf" target="_blank" rel="noopener">
+    <a
+      class="btn resume"
+      href="/alex-wade-resume.pdf"
+      type="application/pdf"
+      target="_blank"
+      rel="noopener"
+      data-label={m.header.resume}
+    >
       {m.header.resume}
       <span class="visually-hidden">{m.glance.newTab}</span>
     </a>
@@ -157,14 +164,11 @@ const alternates = locales
   }
 
   .resume {
+    --btn-text: var(--redline);
+    --btn-fill: var(--redline);
+    --btn-fill-text: var(--paper);
     border-color: var(--redline);
-    color: var(--redline);
     text-decoration: none;
-  }
-
-  .resume:hover {
-    background: var(--redline);
-    color: var(--paper);
   }
 
   /* The favicon's monogram, which leads back to the top from the stuck phone bar. Phones only; see below. */

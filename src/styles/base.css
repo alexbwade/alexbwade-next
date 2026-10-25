@@ -86,17 +86,57 @@ p {
   font-weight: 500;
 }
 
+/*
+ * A button that sets --btn-fill gets a fill that sweeps in from the left on hover, with the same timing as the nav
+ * underlines. Without --btn-fill the sweep is transparent and nothing shows.
+ */
 .btn {
+  --btn-text: var(--ink);
+  --btn-fill: transparent;
+  --btn-fill-text: var(--btn-text);
+  --btn-padding: 14px;
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  padding: 0 14px;
+  padding: 0 var(--btn-padding);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--paper);
-  color: var(--ink);
+  background: linear-gradient(var(--btn-fill), var(--btn-fill)) no-repeat 0 0 / 0 100% var(--paper);
+  color: var(--btn-text);
   font: 500 14px var(--font-sans);
   cursor: pointer;
+  transition: background-size 0.35s var(--ease);
+}
+
+/*
+ * With data-label (a copy of its visible text), the label is laid over itself in --btn-fill-text and revealed from
+ * the left in step with the fill, so each letter changes colour as the fill's edge passes it. Both copies are plain
+ * text, so the label renders the same before, during and after. The empty alt text keeps screen readers from reading
+ * the copy.
+ */
+.btn[data-label]::after {
+  content: attr(data-label) / "";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding-inline: var(--btn-padding);
+  color: var(--btn-fill-text);
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+  transition: clip-path 0.35s var(--ease);
+}
+
+/* Touch screens skip it, because a tapped button stays hovered. */
+@media (hover: hover) {
+  .btn:hover {
+    background-size: 100% 100%;
+  }
+
+  .btn[data-label]:hover::after {
+    clip-path: inset(0);
+  }
 }
 
 /* Controls that only work with the inline script. The script sets data-js in <head>, so they never pop in. */
