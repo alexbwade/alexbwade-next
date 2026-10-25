@@ -43,9 +43,12 @@ const alternates = locales
 
 <style>
   .header {
-    /* How far the bar's backdrop sits inside the header, top and bottom. */
+    /*
+     * How far the bar's backdrop sits inside the header's 24px padding. The bottom keeps 2px more, because the
+     * shadow and the progress line make the space below the links look smaller than it is.
+     */
     --bar-top: 8px;
-    --bar-bottom: 8px;
+    --bar-bottom: 6px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -168,11 +171,11 @@ const alternates = locales
 
     /*
      * Two rows is too tall to keep on a phone screen, so the name row scrolls away and only the nav row sticks. The
-     * backdrop starts 8px above the nav (24px padding + the 44px row + the 12px gap - 8px) and ends 8px below it.
+     * backdrop starts 8px above the nav (24px padding + the 44px row + the 12px gap - 8px) and ends 10px below it.
      */
     .header {
       --bar-top: 72px;
-      --bar-bottom: 16px;
+      --bar-bottom: 14px;
     }
   }
 
