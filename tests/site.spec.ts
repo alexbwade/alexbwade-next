@@ -165,6 +165,19 @@ test.describe("motion", () => {
     await expect(root).not.toHaveAttribute("data-motion");
   });
 
+  test("a load that starts paused shows the first word and panel, which stay up when it plays", async ({ page }) => {
+    await page.goto("/");
+    await page.evaluate(() => localStorage.setItem("motion", "paused"));
+    await page.reload();
+    const firstWord = page.locator(".rotator > span").first();
+    await expect(firstWord).toHaveCSS("transform", "none");
+    await expect(page.locator(".exhibit > *").first()).toHaveCSS("transform", "none");
+
+    await page.getByRole("button", { name: "Play animation" }).click();
+    await page.waitForTimeout(500);
+    await expect(firstWord).toHaveCSS("transform", "none");
+  });
+
   test("reduced motion shows the first word and panel, static, with no pause button", async ({ page }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/");

@@ -4,7 +4,10 @@
   const root = document.documentElement;
   root.dataset.js = "";
   try {
-    if (localStorage.getItem("motion") === "paused") root.dataset.motion = "paused";
+    if (localStorage.getItem("motion") === "paused") {
+      root.dataset.motion = "paused";
+      root.toggleAttribute("data-paused-on-load", true);
+    }
   } catch {
     // Storage can be blocked; the default is to animate.
   }
@@ -14,6 +17,11 @@
     const isPaused = root.dataset.motion !== "paused";
     if (isPaused) root.dataset.motion = "paused";
     else root.removeAttribute("data-motion");
+    // The first press after a paused load starts the loop from the word already showing. See motion.css.
+    if (root.hasAttribute("data-paused-on-load")) {
+      root.removeAttribute("data-paused-on-load");
+      root.toggleAttribute("data-resumed-from-load", true);
+    }
     try {
       localStorage.setItem("motion", isPaused ? "paused" : "running");
     } catch {
