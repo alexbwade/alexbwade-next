@@ -295,8 +295,15 @@ const alternates = locales
   ul a {
     display: block;
     padding-block: 12px;
-    /* An underline in the text colour that grows from the left, for hover and for the current section. */
-    background: linear-gradient(currentColor, currentColor) no-repeat 0 calc(100% - 7px) / 0 2px;
+    /* Makes the link 44px tall, so the underlines below land on whole pixels instead of blurring across two. */
+    line-height: 20px;
+    /*
+     * Two underlines in the text colour that grow from the left: 1px for hover, 2px for the current section. Each
+     * keeps its own thickness, so only its width animates.
+     */
+    background:
+      linear-gradient(currentColor, currentColor) no-repeat 0 calc(100% - 7px) / 0 1px,
+      linear-gradient(currentColor, currentColor) no-repeat 0 calc(100% - 7px) / 0 2px;
     text-decoration: none;
     transition:
       color 0.25s var(--ease),
@@ -313,16 +320,20 @@ const alternates = locales
 
   @media (hover: hover) {
     ul a:hover {
-      background-size: 100% 1px;
+      background-size:
+        100% 1px,
+        0 2px;
     }
   }
 
   /*
    * The current section, set from scroll in controls.js. The colour alone is too close to ink to mark it, so it also
-   * gets a thicker underline.
+   * gets the thicker underline.
    */
   ul a[aria-current] {
     color: var(--redline);
-    background-size: 100% 2px;
+    background-size:
+      0 1px,
+      100% 2px;
   }
 </style>
