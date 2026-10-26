@@ -1,7 +1,7 @@
 ---
 import { Picture } from "astro:assets";
 import { t, toLocale } from "../i18n";
-import courtyard from "../assets/alex-courtyard.jpg";
+import stringLights from "../assets/alex-string-lights.jpg";
 import ExhibitSpecimen from "./ExhibitSpecimen.astro";
 import ExhibitShell from "./ExhibitShell.astro";
 import ExhibitCode from "./ExhibitCode.astro";
@@ -14,7 +14,7 @@ const m = t(locale);
   <div class="band-inner">
     <figure>
       <Picture
-        src={courtyard}
+        src={stringLights}
         formats={["avif", "webp"]}
         widths={[320, 640, 960]}
         sizes="320px"

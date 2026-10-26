@@ -46,7 +46,7 @@ export const es: Messages = {
 
   band: {
     label: "Retrato y ejemplos",
-    photoAlt: "Alex Wade en un patio de ladrillo",
+    photoAlt: "Alex Wade bajo una guirnalda de luces",
     creditPrefix: "Foto:",
     creditName: "Matthew Thogerson",
     creditUrl: "https://www.badtactic.com/",
@@ -80,7 +80,7 @@ export const es: Messages = {
 
   about: {
     label: "Sobre mí",
-    photoAlt: "Alex Wade bajo una guirnalda de luces",
+    photoAlt: "Alex Wade sonriendo en una calle de la ciudad",
     statement: "Crear experiencias de usuario fluidas es mi oficio.",
     paragraphs: [
       "A lo largo de toda mi carrera, he puesto la UX en el centro de lo que hago. Los usuarios merecen interfaces intuitivas, ágiles y de alto rendimiento que les permitan lograr sus objetivos sin esfuerzo. Todo debería “simplemente funcionar”.",

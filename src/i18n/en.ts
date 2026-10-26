@@ -39,7 +39,7 @@ export const en = {
 
   band: {
     label: "Portrait and examples",
-    photoAlt: "Alex Wade in a brick courtyard",
+    photoAlt: "Alex Wade under string lights",
     creditPrefix: "Photo:",
     creditName: "Matthew Thogerson",
     creditUrl: "https://www.badtactic.com/",
@@ -74,7 +74,7 @@ export const en = {
 
   about: {
     label: "About",
-    photoAlt: "Alex Wade under string lights",
+    photoAlt: "Alex Wade smiling on a city street",
     statement: "Building seamless user experiences is my craft.",
     paragraphs: [
       "Throughout my whole career, I’ve put UX at the center of what I do. Users deserve intuitive, responsive, performant UIs that allow them to accomplish their goals effortlessly. It should always “just work.”",

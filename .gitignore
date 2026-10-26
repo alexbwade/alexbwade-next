@@ -51,3 +51,6 @@ todo.md
 .pnp.*
 # claude code session worktrees
 .claude/worktrees/
+
+# lighthouse ci reports
+/.lighthouseci/

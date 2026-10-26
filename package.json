@@ -12,7 +12,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "ci": "yarn check && yarn lint && yarn format:check && yarn build && yarn test",
-    "test": "playwright test"
+    "test": "playwright test",
+    "lighthouse": "yarn dlx @lhci/cli@0.15.1 autorun"
   },
   "packageManager": "yarn@4.18.0",
   "engines": {
