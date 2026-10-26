@@ -14,6 +14,7 @@ yarn dev       # local dev server at http://localhost:4321
 yarn build     # static output in dist/
 yarn test      # Playwright + axe against a production build
 yarn ci        # type check, lint, format check, build and test
+yarn lighthouse  # Lighthouse against dist/; fails if any category scores under 90
 ```
 
 The first `yarn test` needs a browser: `yarn playwright install chromium`.

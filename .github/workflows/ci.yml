@@ -30,3 +30,33 @@ jobs:
 
       - name: Run CI
         run: yarn ci
+
+  lighthouse:
+    name: Lighthouse
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install dependencies
+        run: corepack enable && yarn install --immutable
+
+      - name: Build
+        run: yarn build
+
+      # Fails the job if any page's median score drops below 90 (green) in any category. See lighthouserc.json.
+      - name: Run Lighthouse
+        run: yarn lighthouse
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/

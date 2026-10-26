@@ -1,7 +1,7 @@
 ---
 import { Picture } from "astro:assets";
 import { t, toLocale } from "../i18n";
-import stringLights from "../assets/alex-string-lights.jpg";
+import street from "../assets/alex-street.jpg";
 
 const locale = toLocale(Astro.currentLocale);
 const m = t(locale).about;
@@ -15,7 +15,7 @@ const m = t(locale).about;
     <div class="row">
       <div class="lede">
         <Picture
-          src={stringLights}
+          src={street}
           formats={["avif", "webp"]}
           widths={[160, 320]}
           sizes="160px"
