@@ -90,7 +90,7 @@ export const en = {
         items: [
           {
             title: "Sole maintainer and core contributor",
-            body: "129 components used by 16+ apps and about 57 engineers; I designed and built around 30 of the second-generation components.",
+            body: "55 active components (129 total) used by 14 apps (+2 more onboarding) and about 50 engineers; I designed and built around 30 of the second-generation components.",
             meta: "Lightspeed Systems",
           },
           {

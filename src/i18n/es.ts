@@ -96,7 +96,7 @@ export const es: Messages = {
         items: [
           {
             title: "Mantenimiento y desarrollo principal",
-            body: "129 componentes que usan más de 16 apps y unos 57 ingenieros; diseñé y construí cerca de 30 de los componentes de segunda generación.",
+            body: "55 componentes activos (129 en total) que usan 14 apps (+2 más en incorporación) y unos 50 ingenieros; diseñé y construí cerca de 30 de los componentes de segunda generación.",
             meta: "Lightspeed Systems",
           },
           {
